@@ -42,19 +42,20 @@ graph TD
     F --> A
 ```
 ## 🧰 Technology Stack
-ML & AI: TensorFlow 2.x, Transformers, Attention Mechanisms
 
-Infra: Docker, Kubernetes, Redis, Prometheus
+- **ML & AI**: TensorFlow 2.x, Transformers, Attention Mechanisms  
+- **Infra**: Docker, Kubernetes, Redis, Prometheus  
+- **Data**: Kafka, Spark, PostgreSQL
 
-Data: Kafka, Spark, PostgreSQL
 
 ## 🧠 ML Methodology
 
-🔍 Model Architecture
-Global Context (51%): Trends, popularity, behavioral signals
-Channel-Specific (24%): Platform behavior, optimization
-Store-Level (17%): Local taste, inventory
-Advanced Features (8%): Occasion, customer segment
+### 🔍 Model Architecture
+
+- **Global Context (51%)**: Trends, popularity, behavioral signals  
+- **Channel-Specific (24%)**: Platform behavior, optimization  
+- **Store-Level (17%)**: Local taste, inventory  
+- **Advanced Features (8%)**: Occasion, customer segment
 
 
 ## 🧪 Feature Engineering
@@ -70,23 +71,27 @@ Advanced Features (8%): Occasion, customer segment
 ```
 
 ## 🧪 Evaluation
-Strict Leave-One-Out (LOO): Predict 1 held-out item per order
-Temporal Split: Future-aware evaluation
 
-🔍 Key Features
-⏱️ Real-time personalization (<100ms latency)
-🧠 Context-aware recommendations
-📈 Confidence calibration and lift analysis
-🔄 Auto-scaling, high-availability, and monitoring
-🛒 Cart analysis, long-tail optimization, and seasonal modeling
+- **Strict Leave-One-Out (LOO)**: Predict 1 held-out item per order  
+- **Temporal Split**: Future-aware evaluation
+
+## 🔍 Key Features
+
+- ⏱️ **Real-time personalization** (<100ms latency)  
+- 🧠 **Context-aware recommendations**  
+- 📈 **Confidence calibration and lift analysis**  
+- 🔄 **Auto-scaling**, **high-availability**, and **monitoring**  
+- 🛒 **Cart analysis**, **long-tail optimization**, and **seasonal modeling**
+
 
 ## 🚀 Quick Start
 
 ## 📦 Prerequisites
-Python 3.8+
-TensorFlow 2.x
-Docker & Kubernetes
-16GB+ RAM for training
+
+- Python 3.8+  
+- TensorFlow 2.x  
+- Docker & Kubernetes  
+- 16GB+ RAM for training
 
 ## 🔧 Installation
 ```git clone https://github.com/your-org/food-recommendation-engine.git
