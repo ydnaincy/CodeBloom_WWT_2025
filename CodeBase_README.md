@@ -42,8 +42,9 @@ python wingmate_recommender.py \
   --do_eval true
 ```
 
-### Google Colab
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/you/wingmate-ai/blob/main/notebooks/WingMate_Analysis.ipynb)
+### ⚙⚡Google Colab
+[![Open In Colab]](https://colab.research.google.com/github/you/wingmate-ai/blob/main/notebooks/WingMate_Analysis.ipynb)
+
 
 ## 🏗️ Technical Architecture
 
@@ -219,13 +220,6 @@ The system generates comprehensive business intelligence visualizations:
 - Multi-armed bandit exploration strategies
 - Cross-domain transfer learning
 
-## 📚 Documentation
-
-- [Installation Guide](docs/installation.md)
-- [API Reference](docs/api.md)
-- [Troubleshooting](docs/troubleshooting.md)
-- [Contributing Guidelines](CONTRIBUTING.md)
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -257,6 +251,6 @@ Built with enterprise-grade reliability and academic rigor for production deploy
 ---
 
 <div align="center">
-  <strong>Version 2.1.0 | Last Updated: August 2025</strong><br>
+  <strong> Last Updated: August 2025</strong><br>
   Made with ❤️ by the CodeBloom Team
 </div>
