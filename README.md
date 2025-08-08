@@ -79,6 +79,23 @@ graph TD
     E --> F[Performance Analytics]
     F --> A
 ```
+
+```graph TD
+    A[User Cart] --> B[Real-Time Analysis]
+    B --> C[Collaborative Filtering 40%]
+    B --> D[Content-Based 35%]
+    B --> E[Business Rules 25%]
+    C --> F[Similarity Matrix]
+    D --> G[Category Analysis]
+    E --> H[Loyalty & Promotions]
+    F --> I[Combined Scoring]
+    G --> I
+    H --> I
+    I --> J[Top 3 Recommendations]
+    J --> K[Real-Time UI Update]
+```
+
+
 ## 🧰 Technology Stack
 
 - **ML & AI**: TensorFlow 2.x, Transformers, Attention Mechanisms  
