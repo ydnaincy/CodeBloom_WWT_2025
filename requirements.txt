@@ -1,0 +1,41 @@
+# Wings R Us - AI Powered Food Ordering App
+# Frontend Dependencies (for reference - this is a client-side app)
+
+# Core Web Technologies
+# - HTML5
+# - CSS3 (with modern features like CSS Grid, Flexbox, Custom Properties)
+# - Vanilla JavaScript (ES6+)
+
+# No server-side dependencies required for the current implementation
+# This is a fully client-side Progressive Web App (PWA)
+
+# Browser Requirements:
+# - Modern browsers supporting ES6+
+# - Chrome 60+, Firefox 55+, Safari 11+, Edge 79+
+
+# Optional Development Dependencies (if setting up local development):
+# - Live Server (VS Code extension or npm package)
+# - Python 3.x (for simple local server: python -m http.server 8000)
+# - Node.js (for npm-based live server: npx live-server)
+
+# For Production Deployment:
+# - Any static file hosting service (Netlify, Vercel, GitHub Pages, etc.)
+# - CDN support for optimal performance
+# - HTTPS enabled for PWA features
+
+# Future Backend Integration (when ready):
+# python>=3.8
+# fastapi>=0.68.0
+# uvicorn>=0.15.0
+# scikit-learn>=1.0.0
+# pandas>=1.3.0
+# numpy>=1.21.0
+# sqlalchemy>=1.4.0
+# redis>=3.5.0
+# celery>=5.2.0
+# tensorflow>=2.6.0  # For advanced ML recommendations
+# torch>=1.9.0       # Alternative ML framework
+# pydantic>=1.8.0
+# python-multipart>=0.0.5
+# python-jose>=3.3.0
+# bcrypt>=3.2.0
