@@ -41,14 +41,14 @@ graph TD
     E --> F[Performance Analytics]
     F --> A
 ```
-🧰 Technology Stack
+## 🧰 Technology Stack
 ML & AI: TensorFlow 2.x, Transformers, Attention Mechanisms
 
 Infra: Docker, Kubernetes, Redis, Prometheus
 
 Data: Kafka, Spark, PostgreSQL
 
-🧠 ML Methodology
+## 🧠 ML Methodology
 
 🔍 Model Architecture
 Global Context (51%): Trends, popularity, behavioral signals
@@ -57,8 +57,8 @@ Store-Level (17%): Local taste, inventory
 Advanced Features (8%): Occasion, customer segment
 
 
-🧪 Feature Engineering
-def extract_contextual_features(order_history, user_profile, current_context):
+## 🧪 Feature Engineering
+```def extract_contextual_features(order_history, user_profile, current_context):
     return {
         'global_popularity': compute_item_popularity_scores(),
         'channel_affinity': calculate_channel_preferences(user_profile),
@@ -67,9 +67,9 @@ def extract_contextual_features(order_history, user_profile, current_context):
         'customer_segment': classify_customer_type(user_profile),
         'seasonal_trends': extract_temporal_patterns(order_history)
     }
+```
 
-
-🧪 Evaluation
+## 🧪 Evaluation
 Strict Leave-One-Out (LOO): Predict 1 held-out item per order
 Temporal Split: Future-aware evaluation
 
@@ -80,24 +80,25 @@ Temporal Split: Future-aware evaluation
 🔄 Auto-scaling, high-availability, and monitoring
 🛒 Cart analysis, long-tail optimization, and seasonal modeling
 
-🚀 Quick Start
+## 🚀 Quick Start
 
-📦 Prerequisites
+## 📦 Prerequisites
 Python 3.8+
 TensorFlow 2.x
 Docker & Kubernetes
 16GB+ RAM for training
 
-🔧 Installation
-git clone https://github.com/your-org/food-recommendation-engine.git
+## 🔧 Installation
+```git clone https://github.com/your-org/food-recommendation-engine.git
 cd food-recommendation-engine
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 pip install -e .
+```
 
-▶️ Usage
-from food_recommender import FoodRecommendationEngine
+## ▶️ Usage
+```from food_recommender import FoodRecommendationEngine
 
 engine = FoodRecommendationEngine(
     model_path="models/latest_model.h5",
@@ -118,10 +119,11 @@ recommendations = engine.recommend(
 
 for item in recommendations:
     print(f"{item.name}: {item.confidence:.3f} confidence")
+```
 
 
-🧪 Model Training
-from food_recommender.training import ModelTrainer
+## 🧪 Model Training
+```from food_recommender.training import ModelTrainer
 from food_recommender.data import DataLoader
 
 data_loader = DataLoader("data/orders.parquet")
@@ -135,12 +137,13 @@ trainer = ModelTrainer(
 model = trainer.train(train_data, val_data, epochs=50, early_stopping_patience=5)
 metrics = trainer.evaluate(model, val_data)
 print(f"Validation Recall@1: {metrics['recall_at_1']:.4f}")
+```
 
-📄 License
+## 📄 License
 This project is licensed under the MIT License.
 
 
-Built with ❤️ by us.
+## Built with ❤️ by us.
 
 Transforming how people discover and enjoy food through advanced AI.
 
