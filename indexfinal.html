@@ -1,0 +1,2773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wings R Us - AI Powered</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .app {
+            max-width: 414px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            min-height: 90vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px 10px;
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .tab-icon {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .content {
+            padding: 20px;
+            min-height: 500px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Cart Styles */
+        .cart-summary {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .cart-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cart-count {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .item-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .item-desc {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .rec-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .ai-icon {
+            font-size: 24px;
+            margin-right: 12px;
+            padding: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+        }
+
+        .rec-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .rec-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .accuracy {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .accuracy-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ade80;
+        }
+
+        .accuracy-label {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        .rec-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .rec-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .rec-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .rec-rank {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b6b;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .rec-item-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .rec-emoji {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .rec-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .rec-reason {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .rec-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .confidence {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .algorithm {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .add-rec-btn {
+            width: 100%;
+            background: rgba(255,255,255,0.9);
+            color: #667eea;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-rec-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* Menu Styles */
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 45px;
+            border: 2px solid #e9ecef;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255,107,107,0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            padding: 5px 0;
+        }
+
+        .category {
+            background: white;
+            border: 2px solid #e9ecef;
+            padding: 10px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .category.active {
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff6b6b;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .menu-emoji {
+            font-size: 28px;
+            margin-right: 15px;
+        }
+
+        .menu-info {
+            flex: 1;
+        }
+
+        .menu-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .menu-desc {
+            font-size: 13px;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+
+        .menu-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .menu-tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f8f9fa;
+            color: #6c757d;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .tag.popular { background: #fff3cd; color: #856404; }
+        .tag.spicy { background: #f8d7da; color: #721c24; }
+        .tag.new { background: #d1ecf1; color: #0c5460; }
+
+        .menu-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #ff6b6b;
+            background: white;
+            color: #ff6b6b;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .qty-btn:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .qty-display {
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .add-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: #e55a5a;
+            transform: translateY(-2px);
+        }
+
+        /* Chat Styles */
+        .chat-fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chat-fab:hover {
+            transform: translateY(-3px);
+        }
+
+        .chat-fab.active {
+            background: #ff6b6b;
+            transform: rotate(45deg);
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            height: 450px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateX(400px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .chatbot.open {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-name {
+            font-weight: bold;
+        }
+
+        .chat-status {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-chat:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .chat-messages {
+            height: 280px;
+            overflow-y: auto;
+            padding: 15px;
+            background: #f8f9fa;
+        }
+
+        .message {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .msg-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .msg-avatar.bot {
+            background: #667eea;
+            color: white;
+        }
+
+        .msg-avatar.user {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .msg-text {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 200px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.user .msg-text {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            background: white;
+        }
+
+        .quick-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .quick-btn {
+            background: #f8f9fa;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 10px 15px;
+            resize: none;
+            font-size: 14px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .send-btn {
+            width: 36px;
+            height: 36px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Discover Page Styles */
+        .taste-profile {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .taste-profile::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            padding: 12px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .profile-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .profile-score {
+            margin-left: auto;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ade80;
+        }
+
+        .taste-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .taste-tag {
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .taste-radar {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .trending-section {
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-header h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .live-indicator {
+            background: #ff4444;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .trending-grid {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 5px 0;
+        }
+
+        .trending-item {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            min-width: 140px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .trending-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .trending-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b6b;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .trending-emoji {
+            font-size: 24px;
+            text-align: center;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .trending-name {
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .trending-count {
+            font-size: 11px;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        /* Photo Recognition */
+        .photo-recognition, .voice-section, .ar-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .photo-header, .voice-header, .ar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .photo-icon, .voice-icon, .ar-icon {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+
+        .photo-title, .voice-title, .ar-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .photo-subtitle, .voice-subtitle, .ar-subtitle {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .photo-upload-area {
+            border: 2px dashed #dee2e6;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .photo-upload-area:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .upload-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .upload-subtext {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        /* Voice Ordering */
+        .voice-status {
+            margin-left: auto;
+            background: #28a745;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .voice-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .voice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102,126,234,0.3);
+        }
+
+        .voice-btn.recording {
+            background: #ff4444;
+            animation: recordingPulse 1s infinite;
+        }
+
+        @keyframes recordingPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .voice-pulse {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            animation: voicePulse 2s infinite;
+            opacity: 0;
+        }
+
+        .voice-btn.recording .voice-pulse {
+            opacity: 1;
+        }
+
+        @keyframes voicePulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+        }
+
+        .voice-transcript {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Gamification */
+        .gamification-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .achievements-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .achievement {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement.unlocked {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+        }
+
+        .achievement.locked {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+        }
+
+        .achievement-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .achievement.locked .achievement-icon {
+            background: #e9ecef;
+            filter: grayscale(1);
+        }
+
+        .achievement-info {
+            flex: 1;
+        }
+
+        .achievement-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .achievement-desc {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .achievement-progress {
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.2);
+            font-size: 12px;
+        }
+
+        .achievement.locked .achievement-progress {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .weekly-challenge {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .challenge-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .challenge-icon {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+
+        .challenge-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .challenge-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .challenge-reward {
+            margin-left: auto;
+            background: rgba(0,0,0,0.1);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .challenge-progress-bar {
+            background: rgba(0,0,0,0.1);
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .challenge-fill {
+            background: #28a745;
+            height: 100%;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-status {
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* AR Section */
+        .ar-preview {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .ar-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ar-model {
+            font-size: 64px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .ar-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .ar-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ar-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Updates */
+        @media (max-width: 450px) {
+            body { padding: 10px; }
+            .app { border-radius: 15px; }
+            .chatbot { width: calc(100vw - 40px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🍗 WINGS R US</div>
+            <div class="tagline">AI-Powered Food Experience</div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('cart')">
+                <span class="tab-icon">🛒</span>
+                Cart
+            </button>
+            <button class="tab" onclick="showTab('menu')">
+                <span class="tab-icon">📱</span>
+                Menu
+            </button>
+            <button class="tab" onclick="showTab('orders')">
+                <span class="tab-icon">📦</span>
+                Orders
+            </button>
+            <button class="tab" onclick="showTab('loyalty')">
+                <span class="tab-icon">💎</span>
+                Loyalty
+            </button>
+            <button class="tab" onclick="showTab('discover')">
+                <span class="tab-icon">🔥</span>
+                Discover
+            </button>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Cart Section -->
+            <div id="cart" class="section active">
+                <div class="cart-summary">
+                    <div class="cart-header">
+                        <h3 class="cart-title">Your Order</h3>
+                        <span class="cart-count" id="cartCount">3 items</span>
+                    </div>
+                    <div id="cartItems">
+                        <div class="cart-item">
+                            <span class="item-icon">🍗</span>
+                            <div class="item-info">
+                                <div class="item-name">6pc Boneless Mild</div>
+                                <div class="item-desc">Classic mild buffalo wings</div>
+                            </div>
+                            <span class="item-price">$8.99</span>
+                        </div>
+                        <div class="cart-item">
+                            <span class="item-icon">🧀</span>
+                            <div class="item-info">
+                                <div class="item-name">Large Cheese Fries</div>
+                                <div class="item-desc">Crispy fries with melted cheese</div>
+                            </div>
+                            <span class="item-price">$5.49</span>
+                        </div>
+                        <div class="cart-item">
+                            <span class="item-icon">🥤</span>
+                            <div class="item-info">
+                                <div class="item-name">20oz Soda</div>
+                                <div class="item-desc">Your choice of beverage</div>
+                            </div>
+                            <span class="item-price">$2.99</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Recommendations -->
+                <div class="recommendations">
+                    <div class="rec-header">
+                        <div class="ai-icon">🤖</div>
+                        <div>
+                            <div class="rec-title">Smart Recommendations</div>
+                            <div class="rec-subtitle">Powered by advanced ML algorithms</div>
+                        </div>
+                        <div class="accuracy">
+                            <div class="accuracy-number" id="accuracy">98.7%</div>
+                            <div class="accuracy-label">ACCURACY</div>
+                        </div>
+                    </div>
+                    <div class="rec-grid" id="recommendations">
+                        <!-- Recommendations will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Section -->
+            <div id="menu" class="section">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search menu items..." id="searchInput">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="categories" id="categories">
+                    <button class="category active" data-category="all">🍽️ All</button>
+                    <button class="category" data-category="wings">🍗 Wings</button>
+                    <button class="category" data-category="sides">🍟 Sides</button>
+                    <button class="category" data-category="drinks">🥤 Drinks</button>
+                    <button class="category" data-category="combos">🍱 Combos</button>
+                    <button class="category" data-category="sauces">🌶️ Sauces</button>
+                </div>
+
+                <div class="menu-grid" id="menuItems">
+                    <!-- Menu items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div id="orders" class="section">
+                <div class="cart-summary">
+                    <div class="cart-header">
+                        <h3 class="cart-title">Place Order</h3>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <button class="add-btn" style="flex: 1;">🏃‍♂️ Pickup (15-20 min)</button>
+                        <button class="add-btn" style="flex: 1; background: #6c757d;">🚚 Delivery (30-45 min)</button>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="cart-header">
+                        <h3 class="cart-title">Recent Orders</h3>
+                    </div>
+                    <div class="cart-item" onclick="showNotification('Order from Dec 26 reordered!')">
+                        <span class="item-icon">📦</span>
+                        <div class="item-info">
+                            <div class="item-name">Yesterday, 6:45 PM</div>
+                            <div class="item-desc">6pc Boneless Mild, Large Cheese Fries, 20oz Soda</div>
+                        </div>
+                        <span class="item-price">$17.47</span>
+                    </div>
+                    <div class="cart-item" onclick="showNotification('Order from Dec 25 reordered!')">
+                        <span class="item-icon">📦</span>
+                        <div class="item-info">
+                            <div class="item-name">Dec 25, 7:30 PM</div>
+                            <div class="item-desc">20pc Grilled Wings, Buffalo Fries</div>
+                        </div>
+                        <span class="item-price">$22.48</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loyalty Section -->
+            <div id="loyalty" class="section">
+                <div style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: #333; border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 24px;">💎</span>
+                            <div>
+                                <div style="font-size: 18px; font-weight: bold;">Gold Member</div>
+                                <div style="font-size: 12px; opacity: 0.8;">1,247 Points Available</div>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 20px; font-weight: bold; color: #059669;">Level 3</div>
+                            <div style="font-size: 10px; opacity: 0.8;">STATUS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="cart-header">
+                        <h3 class="cart-title">Redeem Rewards</h3>
+                    </div>
+                    <div class="cart-item" onclick="redeemReward('Free 6pc Wings', 800)">
+                        <span class="item-icon">🍗</span>
+                        <div class="item-info">
+                            <div class="item-name">Free 6pc Wings</div>
+                            <div class="item-desc">800 points required</div>
+                        </div>
+                        <button class="add-btn" style="padding: 8px 15px; font-size: 12px;">Redeem</button>
+                    </div>
+                    <div class="cart-item" onclick="redeemReward('Free Large Fries', 400)">
+                        <span class="item-icon">🍟</span>
+                        <div class="item-info">
+                            <div class="item-name">Free Large Fries</div>
+                            <div class="item-desc">400 points required</div>
+                        </div>
+                        <button class="add-btn" style="padding: 8px 15px; font-size: 12px;">Redeem</button>
+                    </div>
+                    <div class="cart-item" onclick="redeemReward('$5 Off Order', 500)">
+                        <span class="item-icon">💵</span>
+                        <div class="item-info">
+                            <div class="item-name">$5 Off Order</div>
+                            <div class="item-desc">500 points required</div>
+                        </div>
+                        <button class="add-btn" style="padding: 8px 15px; font-size: 12px;">Redeem</button>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="cart-header">
+                        <h3 class="cart-title">Personalized Offers</h3>
+                    </div>
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 4px solid #ffc107;">
+                        <div style="font-weight: bold; margin-bottom: 5px;">🔥 20% Off Your Favorite Wings</div>
+                        <div style="font-size: 12px; color: #856404; margin-bottom: 8px;">Get 20% off 6pc Boneless Mild - expires in 3 days</div>
+                        <span style="background: #ffc107; color: #333; padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: bold;">Code: MILD20</span>
+                    </div>
+                    <div style="background: #d4edda; padding: 15px; border-radius: 10px; border-left: 4px solid #28a745;">
+                        <div style="font-weight: bold; margin-bottom: 5px;">🍟 Free Upgrade to Large Fries</div>
+                        <div style="font-size: 12px; color: #155724; margin-bottom: 8px;">With any wing order - valid this weekend</div>
+                        <span style="background: #28a745; color: white; padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: bold;">Code: UPSIZE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discover Section -->
+            <div id="discover" class="section">
+                <!-- AI Taste Profile -->
+                <div class="taste-profile">
+                    <div class="profile-header">
+                        <div class="profile-icon">🎯</div>
+                        <div>
+                            <div class="profile-title">Your AI Taste Profile</div>
+                            <div class="profile-subtitle">Generated from 23 orders • 94% accuracy</div>
+                        </div>
+                        <div class="profile-score">8.7/10</div>
+                    </div>
+                    <div class="taste-tags">
+                        <span class="taste-tag mild">🧈 Mild Lover</span>
+                        <span class="taste-tag cheese">🧀 Cheese Fanatic</span>
+                        <span class="taste-tag classic">👑 Classic Style</span>
+                        <span class="taste-tag value">💰 Value Seeker</span>
+                    </div>
+                    <div class="taste-radar">
+                        <canvas id="tasteRadar" width="200" height="200"></canvas>
+                    </div>
+                </div>
+
+                <!-- Trending Now -->
+                <div class="trending-section">
+                    <div class="section-header">
+                        <h3>🔥 Trending Now</h3>
+                        <span class="live-indicator">LIVE</span>
+                    </div>
+                    <div class="trending-grid" id="trendingItems">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Photo Recognition -->
+                <div class="photo-recognition">
+                    <div class="photo-header">
+                        <span class="photo-icon">📸</span>
+                        <div>
+                            <div class="photo-title">AI Photo Recognition</div>
+                            <div class="photo-subtitle">Snap a photo to identify & order similar items</div>
+                        </div>
+                    </div>
+                    <div class="photo-upload-area" id="photoUpload">
+                        <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                        <div class="upload-content">
+                            <div class="upload-icon">📷</div>
+                            <div class="upload-text">Take Photo or Upload</div>
+                            <div class="upload-subtext">AI will analyze & suggest similar items</div>
+                        </div>
+                    </div>
+                    <div class="photo-results" id="photoResults" style="display: none;"></div>
+                </div>
+
+                <!-- Voice Ordering -->
+                <div class="voice-section">
+                    <div class="voice-header">
+                        <span class="voice-icon">🎤</span>
+                        <div>
+                            <div class="voice-title">Voice Ordering</div>
+                            <div class="voice-subtitle">Just say what you want!</div>
+                        </div>
+                        <div class="voice-status" id="voiceStatus">Ready</div>
+                    </div>
+                    <button class="voice-btn" id="voiceBtn" onclick="toggleVoiceOrdering()">
+                        <span class="voice-pulse"></span>
+                        🎤 Start Voice Order
+                    </button>
+                    <div class="voice-transcript" id="voiceTranscript" style="display: none;"></div>
+                </div>
+
+                <!-- Gamification -->
+                <div class="gamification-section">
+                    <div class="section-header">
+                        <h3>🏆 Challenges & Achievements</h3>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">🍗</div>
+                            <div class="achievement-info">
+                                <div class="achievement-name">Wing Master</div>
+                                <div class="achievement-desc">Ordered 10+ wing varieties</div>
+                            </div>
+                            <div class="achievement-progress">✓</div>
+                        </div>
+                        <div class="achievement locked">
+                            <div class="achievement-icon">🌶️</div>
+                            <div class="achievement-info">
+                                <div class="achievement-name">Spice Champion</div>
+                                <div class="achievement-desc">Try all spicy items (3/7)</div>
+                            </div>
+                            <div class="achievement-progress">3/7</div>
+                        </div>
+                        <div class="achievement locked">
+                            <div class="achievement-icon">⚡</div>
+                            <div class="achievement-info">
+                                <div class="achievement-name">Speed Demon</div>
+                                <div class="achievement-desc">5 orders in one week</div>
+                            </div>
+                            <div class="achievement-progress">2/5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="weekly-challenge">
+                        <div class="challenge-header">
+                            <span class="challenge-icon">🎯</span>
+                            <div>
+                                <div class="challenge-title">Weekly Challenge</div>
+                                <div class="challenge-subtitle">Try 3 new sauce combinations</div>
+                            </div>
+                            <div class="challenge-reward">+500 pts</div>
+                        </div>
+                        <div class="challenge-progress-bar">
+                            <div class="challenge-fill" style="width: 33%;"></div>
+                        </div>
+                        <div class="challenge-status">1/3 completed • 4 days left</div>
+                    </div>
+                </div>
+
+                <!-- AR Menu Preview -->
+                <div class="ar-section">
+                    <div class="ar-header">
+                        <span class="ar-icon">📱</span>
+                        <div>
+                            <div class="ar-title">AR Menu Preview</div>
+                            <div class="ar-subtitle">See items in 3D before ordering</div>
+                        </div>
+                    </div>
+                    <div class="ar-preview" id="arPreview">
+                        <div class="ar-placeholder">
+                            <div class="ar-model">🍗</div>
+                            <div class="ar-controls">
+                                <button class="ar-btn" onclick="startAR()">📱 Launch AR</button>
+                                <button class="ar-btn" onclick="show3DModel()">🔄 3D View</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Button -->
+    <button class="chat-fab" id="chatBtn" onclick="toggleChat()">🤖</button>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chat-header">
+            <div class="chat-info">
+                <div class="chat-avatar">🤖</div>
+                <div>
+                    <div class="chat-name">Wings AI Assistant</div>
+                    <div class="chat-status">Online • Ready to help</div>
+                </div>
+            </div>
+            <button class="close-chat" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="msg-avatar bot">🤖</div>
+                <div class="msg-text">Hey! I'm your Wings R Us AI assistant. I can help you find the perfect meal! 🍗</div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <div class="quick-buttons">
+                <button class="quick-btn" onclick="quickChat('Recommend wings')">🍗 Wings</button>
+                <button class="quick-btn" onclick="quickChat('Spicy options')">🌶️ Spicy</button>
+                <button class="quick-btn" onclick="quickChat('Show combos')">🍱 Combos</button>
+                <button class="quick-btn" onclick="quickChat('Check points')">💎 Points</button>
+            </div>
+            <div class="input-row">
+                <textarea class="chat-input" id="chatInput" placeholder="Ask me anything..." rows="1"></textarea>
+                <button class="send-btn" onclick="sendChat()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <span id="notificationText">Success!</span>
+    </div>
+
+    <script>
+        // Global State
+        let cartCount = 3;
+        let currentTab = 'cart';
+        let chatOpen = false;
+        let mlAccuracy = 98.7;
+        let loyaltyPoints = 1247;
+        let voiceRecording = false;
+        let achievements = {
+            wingMaster: true,
+            spiceChampion: false,
+            speedDemon: false
+        };
+
+        // Advanced Features
+        let trendingData = [
+            { name: 'Buffalo Fries', emoji: '🍟', orders: 247, trend: '+15%' },
+            { name: 'Mango Habanero', emoji: '🥭', orders: 189, trend: '+8%' },
+            { name: 'Hot Honey Rub', emoji: '🍯', orders: 156, trend: '+12%' },
+            { name: '20pc Grilled', emoji: '🍖', orders: 134, trend: '+5%' }
+        ];
+
+        // Menu Data
+        const menuData = [
+            { id: 1, name: '6pc Boneless Mild', emoji: '🍗', price: 8.99, category: 'wings', desc: 'Classic boneless wings with mild buffalo sauce', tags: ['popular'] },
+            { id: 2, name: '10pc Traditional Hot', emoji: '🔥', price: 12.99, category: 'wings', desc: 'Traditional bone-in wings with fiery hot sauce', tags: ['spicy'] },
+            { id: 3, name: '20pc Grilled Wings', emoji: '🍖', price: 18.99, category: 'wings', desc: 'Healthy grilled wings with your choice of sauce', tags: ['healthy', 'popular'] },
+            { id: 4, name: 'Large Cheese Fries', emoji: '🧀', price: 5.49, category: 'sides', desc: 'Crispy golden fries topped with melted cheese', tags: ['popular'] },
+            { id: 5, name: 'Large Seasoned Fries', emoji: '🍟', price: 4.99, category: 'sides', desc: 'Signature seasoned fries with special spice blend', tags: ['signature'] },
+            { id: 6, name: 'Buffalo Fries', emoji: '🍟', price: 6.49, category: 'sides', desc: 'Fries tossed in famous buffalo sauce', tags: ['spicy'] },
+            { id: 7, name: '20oz Soda', emoji: '🥤', price: 2.99, category: 'drinks', desc: 'Choice of Coke, Pepsi, Sprite, or Orange', tags: ['popular'] },
+            { id: 8, name: 'Fresh Lemonade', emoji: '🍋', price: 3.49, category: 'drinks', desc: 'Made fresh daily with real lemons', tags: ['fresh'] },
+            { id: 9, name: 'Chicken Sub Combo', emoji: '🥪', price: 11.99, category: 'combos', desc: 'Crispy chicken sub with fries and drink', tags: ['popular', 'value'] },
+            { id: 10, name: '10pc Wing Combo', emoji: '🍗', price: 15.99, category: 'combos', desc: '10 wings with large fries and drink', tags: ['popular'] },
+            { id: 11, name: 'Sweet BBQ Blaze', emoji: '🍯', price: 1.49, category: 'sauces', desc: 'Sweet and tangy BBQ sauce with a kick', tags: ['signature'] },
+            { id: 12, name: 'Ranch Dip', emoji: '🥛', price: 0.99, category: 'sauces', desc: 'Classic cool and creamy ranch dipping sauce', tags: ['popular'] },
+            { id: 13, name: 'Hot Honey Rub', emoji: '🍯', price: 1.49, category: 'sauces', desc: 'Sweet honey with a spicy kick', tags: ['spicy'] },
+            { id: 14, name: 'Mango Habanero', emoji: '🥭', price: 1.79, category: 'sauces', desc: 'Tropical mango with fiery habanero peppers', tags: ['spicy'] }
+        ];
+
+        // Real-Time ML Recommendation Engine
+        class RealTimeRecommendationEngine {
+            constructor() {
+                this.currentCart = ['6pc Boneless Mild', 'Large Cheese Fries', '20oz Soda'];
+                this.userProfile = {
+                    preferences: ['mild', 'cheese', 'classic'],
+                    spiceLevel: 1,
+                    loyaltyTier: 'gold',
+                    orderHistory: []
+                };
+                
+                // Item similarity matrix based on real customer data patterns
+                this.itemSimilarity = {
+                    '6pc Boneless Mild': {
+                        'Sweet BBQ Blaze': 0.94, 
+                        'Ranch Dip': 0.87, 
+                        'Large Seasoned Fries': 0.82,
+                        'Hot Honey Rub': 0.78
+                    },
+                    'Large Cheese Fries': {
+                        'Sweet BBQ Blaze': 0.89,
+                        'Chicken Sub Combo': 0.84,
+                        '20oz Soda': 0.81,
+                        'Buffalo Fries': 0.76
+                    },
+                    '20oz Soda': {
+                        'Large Seasoned Fries': 0.88,
+                        '10pc Wing Combo': 0.85,
+                        'Chicken Sub Combo': 0.79,
+                        'Buffalo Fries': 0.74
+                    },
+                    'Buffalo Fries': {
+                        'Mango Habanero': 0.91,
+                        'Hot Honey Rub': 0.87,
+                        '10pc Traditional Hot': 0.83
+                    },
+                    '10pc Traditional Hot': {
+                        'Fresh Lemonade': 0.89,
+                        'Ranch Dip': 0.85,
+                        'Large Seasoned Fries': 0.81
+                    }
+                };
+                
+                // Business rules for cross-selling
+                this.crossSellRules = {
+                    'wings': ['sauces', 'sides'],
+                    'sides': ['drinks', 'sauces'],
+                    'drinks': ['combos', 'sides'],
+                    'sauces': ['wings'],
+                    'combos': ['sauces', 'drinks']
+                };
+                
+                this.popularityBoosts = {
+                    'Sweet BBQ Blaze': 0.15,
+                    'Chicken Sub Combo': 0.12,
+                    'Large Seasoned Fries': 0.10,
+                    'Ranch Dip': 0.08
+                };
+            }
+
+            // Real-time cart analysis
+            analyzeCart() {
+                console.log('🧠 Real-time cart analysis:', this.currentCart);
+                
+                const cartCategories = this.currentCart.map(item => this.getItemCategory(item));
+                const missingCategories = ['wings', 'sides', 'drinks', 'sauces', 'combos']
+                    .filter(cat => !cartCategories.includes(cat));
+                
+                return {
+                    items: this.currentCart,
+                    categories: cartCategories,
+                    missingCategories: missingCategories,
+                    totalValue: this.calculateCartValue(),
+                    spiceLevel: this.detectSpicePreference()
+                };
+            }
+
+            // Generate dynamic recommendations based on current cart state
+            generateRecommendations() {
+                const cartAnalysis = this.analyzeCart();
+                let recommendations = [];
+                
+                console.log('🎯 Generating real-time recommendations for:', cartAnalysis);
+                
+                // 1. Collaborative Filtering - Similar customer behavior
+                for (const cartItem of this.currentCart) {
+                    const similarItems = this.itemSimilarity[cartItem] || {};
+                    
+                    Object.entries(similarItems).forEach(([item, similarity]) => {
+                        if (!this.currentCart.includes(item)) {
+                            const menuItem = this.findMenuItem(item);
+                            if (menuItem) {
+                                recommendations.push({
+                                    ...menuItem,
+                                    confidence: Math.min(99, similarity * 100),
+                                    reason: `${Math.floor(similarity * 100)}% of customers with "${cartItem}" also order this`,
+                                    algorithm: 'Collaborative Filtering',
+                                    score: similarity * 0.4 // 40% weight
+                                });
+                            }
+                        }
+                    });
+                }
+                
+                // 2. Content-Based - Fill missing categories
+                cartAnalysis.missingCategories.forEach(category => {
+                    const categoryItems = menuData.filter(item => item.category === category);
+                    
+                    categoryItems.forEach(item => {
+                        if (!this.currentCart.includes(item.name) && 
+                            !recommendations.find(r => r.name === item.name)) {
+                            
+                            let contentScore = 0.3; // Base score
+                            
+                            // Boost based on user preferences
+                            if (item.tags && item.tags.some(tag => this.userProfile.preferences.includes(tag))) {
+                                contentScore += 0.2;
+                            }
+                            
+                            // Boost popular items
+                            if (this.popularityBoosts[item.name]) {
+                                contentScore += this.popularityBoosts[item.name];
+                            }
+                            
+                            recommendations.push({
+                                ...item,
+                                confidence: Math.min(99, contentScore * 100),
+                                reason: `Perfect ${category} complement to your current order`,
+                                algorithm: 'Content-Based',
+                                score: contentScore * 0.35 // 35% weight
+                            });
+                        }
+                    });
+                });
+                
+                // 3. Business Rules - Loyalty and promotions
+                if (this.userProfile.loyaltyTier === 'gold') {
+                    const loyaltyItems = ['Large Seasoned Fries', 'Buffalo Fries'];
+                    loyaltyItems.forEach(itemName => {
+                        if (!this.currentCart.includes(itemName) && 
+                            !recommendations.find(r => r.name === itemName)) {
+                            
+                            const item = this.findMenuItem(itemName);
+                            if (item) {
+                                recommendations.push({
+                                    ...item,
+                                    confidence: 85,
+                                    reason: 'Gold member exclusive - 20% off sides this order!',
+                                    algorithm: 'Business Rules',
+                                    score: 0.85 * 0.25 // 25% weight
+                                });
+                            }
+                        }
+                    });
+                }
+                
+                // Combine scores and rank
+                const combinedRecs = {};
+                recommendations.forEach(rec => {
+                    if (combinedRecs[rec.name]) {
+                        combinedRecs[rec.name].score += rec.score;
+                        combinedRecs[rec.name].confidence = Math.min(99, combinedRecs[rec.name].confidence + 5);
+                        combinedRecs[rec.name].reason += ` + ${rec.reason}`;
+                    } else {
+                        combinedRecs[rec.name] = rec;
+                    }
+                });
+                
+                // Sort by score and return top 3
+                const finalRecs = Object.values(combinedRecs)
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 3)
+                    .map((rec, index) => ({
+                        ...rec,
+                        rank: index + 1,
+                        confidence: Math.floor(rec.confidence)
+                    }));
+                
+                console.log('✅ Generated real-time recommendations:', finalRecs);
+                return finalRecs;
+            }
+            
+            // Update cart state for real-time analysis
+            updateCart(newCart) {
+                const oldCart = [...this.currentCart];
+                this.currentCart = newCart;
+                
+                console.log('🔄 Cart updated:', {
+                    before: oldCart,
+                    after: this.currentCart,
+                    changes: this.getCartChanges(oldCart, newCart)
+                });
+                
+                // Trigger real-time recommendation refresh
+                this.onCartChange();
+            }
+            
+            getCartChanges(oldCart, newCart) {
+                const added = newCart.filter(item => !oldCart.includes(item));
+                const removed = oldCart.filter(item => !newCart.includes(item));
+                return { added, removed };
+            }
+            
+            onCartChange() {
+                // Real-time recommendation update
+                if (currentTab === 'cart') {
+                    console.log('🎯 Cart changed - refreshing recommendations in real-time');
+                    setTimeout(loadRecommendations, 200); // Small delay for smooth UX
+                }
+            }
+            
+            findMenuItem(itemName) {
+                return menuData.find(item => item.name === itemName);
+            }
+            
+            getItemCategory(itemName) {
+                const item = this.findMenuItem(itemName);
+                return item ? item.category : 'unknown';
+            }
+            
+            calculateCartValue() {
+                return this.currentCart.reduce((total, itemName) => {
+                    const item = this.findMenuItem(itemName);
+                    return total + (item ? item.price : 0);
+                }, 0);
+            }
+            
+            detectSpicePreference() {
+                const spicyItems = this.currentCart.filter(itemName => {
+                    const item = this.findMenuItem(itemName);
+                    return item && item.tags && item.tags.includes('spicy');
+                });
+                return spicyItems.length > 0 ? 'high' : 'low';
+            }
+        }
+
+        // Initialize real-time engine
+        const realtimeEngine = new RealTimeRecommendationEngine();
+
+        // Generate recommendations using real-time engine
+        function generateRecommendations() {
+            return realtimeEngine.generateRecommendations();
+        }
+
+        // Functions
+        function showTab(tabName) {
+            currentTab = tabName;
+            
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            
+            // Load content
+            if (tabName === 'cart') {
+                loadRecommendations();
+            } else if (tabName === 'menu') {
+                loadMenu();
+            } else if (tabName === 'discover') {
+                loadDiscoverContent();
+            }
+        }
+
+        // Advanced Feature Functions
+        function loadDiscoverContent() {
+            loadTrendingItems();
+            drawTasteRadar();
+            setupPhotoRecognition();
+            updateGamification();
+        }
+
+        function loadTrendingItems() {
+            const container = document.getElementById('trendingItems');
+            container.innerHTML = trendingData.map((item, index) => `
+                <div class="trending-item" onclick="addTrendingItem('${item.name}')">
+                    <div class="trending-badge">#${index + 1}</div>
+                    <div class="trending-emoji">${item.emoji}</div>
+                    <div class="trending-name">${item.name}</div>
+                    <div class="trending-count">${item.orders} orders ${item.trend}</div>
+                </div>
+            `).join('');
+        }
+
+        function addTrendingItem(itemName) {
+            const item = menuData.find(i => i.name === itemName) || 
+                         { name: itemName, price: 5.99, emoji: '🔥', desc: 'Trending item!' };
+            
+            showNotification(`🔥 Added trending item: ${itemName}!`);
+            addToCartDirect(item);
+        }
+
+        function addToCartDirect(item) {
+            const cartItems = document.getElementById('cartItems');
+            const newItem = document.createElement('div');
+            newItem.className = 'cart-item';
+            newItem.innerHTML = `
+                <span class="item-icon">${item.emoji}</span>
+                <div class="item-info">
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-desc">${item.desc}</div>
+                </div>
+                <span class="item-price">${item.price}</span>
+            `;
+            cartItems.appendChild(newItem);
+            cartCount++;
+            document.getElementById('cartCount').textContent = `${cartCount} items`;
+        }
+
+        function drawTasteRadar() {
+            const canvas = document.getElementById('tasteRadar');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = 100;
+            const centerY = 100;
+            const radius = 80;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, 200, 200);
+            
+            // Taste profile data (0-1 scale)
+            const profile = {
+                'Mild': 0.9,
+                'Spicy': 0.3,
+                'Sweet': 0.7,
+                'Tangy': 0.6,
+                'Classic': 0.8,
+                'Exotic': 0.4
+            };
+            
+            const labels = Object.keys(profile);
+            const values = Object.values(profile);
+            const angleStep = (Math.PI * 2) / labels.length;
+            
+            // Draw radar background
+            ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+            ctx.lineWidth = 1;
+            for (let i = 1; i <= 5; i++) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, (radius / 5) * i, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+            
+            // Draw axis lines
+            for (let i = 0; i < labels.length; i++) {
+                const angle = i * angleStep - Math.PI / 2;
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                
+                // Draw labels
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.font = '10px -apple-system, BlinkMacSystemFont, sans-serif';
+                ctx.textAlign = 'center';
+                const labelX = centerX + Math.cos(angle) * (radius + 15);
+                const labelY = centerY + Math.sin(angle) * (radius + 15);
+                ctx.fillText(labels[i], labelX, labelY);
+            }
+            
+            // Draw profile area
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(255,255,255,0.8)';
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.lineWidth = 2;
+            
+            for (let i = 0; i < values.length; i++) {
+                const angle = i * angleStep - Math.PI / 2;
+                const distance = values[i] * radius;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            // Draw data points
+            ctx.fillStyle = 'white';
+            for (let i = 0; i < values.length; i++) {
+                const angle = i * angleStep - Math.PI / 2;
+                const distance = values[i] * radius;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function setupPhotoRecognition() {
+            const uploadArea = document.getElementById('photoUpload');
+            const photoInput = document.getElementById('photoInput');
+            
+            uploadArea.addEventListener('click', () => {
+                photoInput.click();
+            });
+            
+            photoInput.addEventListener('change', handlePhotoUpload);
+            
+            // Drag and drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#667eea';
+                uploadArea.style.background = '#f0f0ff';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = '#dee2e6';
+                uploadArea.style.background = 'transparent';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#dee2e6';
+                uploadArea.style.background = 'transparent';
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    processPhoto(files[0]);
+                }
+            });
+        }
+
+        function handlePhotoUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                processPhoto(file);
+            }
+        }
+
+        function processPhoto(file) {
+            const resultsDiv = document.getElementById('photoResults');
+            
+            // Show loading
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 24px; margin-bottom: 10px;">🧠</div>
+                    <div>AI analyzing your photo...</div>
+                    <div style="margin-top: 10px;">
+                        <div style="width: 100%; height: 4px; background: #e9ecef; border-radius: 2px; overflow: hidden;">
+                            <div style="width: 0%; height: 100%; background: #667eea; animation: loadingBar 2s ease-in-out;"></div>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                @keyframes loadingBar {
+                    0% { width: 0%; }
+                    100% { width: 100%; }
+                }
+                </style>
+            `;
+            
+            // Simulate AI processing
+            setTimeout(() => {
+                const recognizedItems = [
+                    { name: 'Buffalo Wings', confidence: 94, emoji: '🍗', price: 8.99 },
+                    { name: 'Cheese Fries', confidence: 87, emoji: '🧀', price: 5.49 },
+                    { name: 'Ranch Dip', confidence: 76, emoji: '🥛', price: 0.99 }
+                ];
+                
+                resultsDiv.innerHTML = `
+                    <div style="margin-bottom: 15px;">
+                        <strong>🎯 AI Recognition Results:</strong>
+                    </div>
+                    ${recognizedItems.map(item => `
+                        <div class="cart-item" style="margin-bottom: 10px; cursor: pointer;" onclick="addRecognizedItem('${item.name}', ${item.price}, '${item.emoji}')">
+                            <span class="item-icon">${item.emoji}</span>
+                            <div class="item-info">
+                                <div class="item-name">${item.name}</div>
+                                <div class="item-desc">${item.confidence}% confidence match</div>
+                            </div>
+                            <button class="add-btn" style="padding: 8px 15px; font-size: 12px;">Add ${item.price}</button>
+                        </div>
+                    `).join('')}
+                    <div style="text-align: center; margin-top: 15px;">
+                        <button onclick="clearPhotoResults()" style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Clear Results</button>
+                    </div>
+                `;
+            }, 2000);
+        }
+
+        function addRecognizedItem(name, price, emoji) {
+            addToCartDirect({ name, price, emoji, desc: 'AI Photo Recognition' });
+            showNotification(`📸 Added from photo: ${name}!`);
+        }
+
+        function clearPhotoResults() {
+            document.getElementById('photoResults').style.display = 'none';
+        }
+
+        function toggleVoiceOrdering() {
+            const btn = document.getElementById('voiceBtn');
+            const status = document.getElementById('voiceStatus');
+            const transcript = document.getElementById('voiceTranscript');
+            
+            if (!voiceRecording) {
+                // Start recording
+                voiceRecording = true;
+                btn.classList.add('recording');
+                btn.innerHTML = '<span class="voice-pulse"></span>🎤 Listening...';
+                status.textContent = 'Listening';
+                status.style.background = '#ff4444';
+                
+                // Show transcript area
+                transcript.style.display = 'block';
+                transcript.innerHTML = '<div style="color: #6c757d;">Say something like "I want 6 piece mild wings with fries"...</div>';
+                
+                // Simulate voice recognition
+                setTimeout(() => {
+                    transcript.innerHTML = '<strong>You said:</strong> "I want six piece mild wings with cheese fries and a soda"';
+                }, 1500);
+                
+                setTimeout(() => {
+                    transcript.innerHTML += '<div style="margin-top: 10px; color: #28a745;"><strong>🧠 AI Processing:</strong> Adding 6pc Boneless Mild, Large Cheese Fries, and 20oz Soda to your cart...</div>';
+                    
+                    // Add items to cart
+                    addToCartDirect({ name: '6pc Boneless Mild', price: 8.99, emoji: '🍗', desc: 'Voice ordered' });
+                    addToCartDirect({ name: 'Large Cheese Fries', price: 5.49, emoji: '🧀', desc: 'Voice ordered' });
+                    addToCartDirect({ name: '20oz Soda', price: 2.99, emoji: '🥤', desc: 'Voice ordered' });
+                    
+                    showNotification('🎤 Voice order added! Total: $17.47');
+                    
+                    // Stop recording
+                    setTimeout(() => {
+                        voiceRecording = false;
+                        btn.classList.remove('recording');
+                        btn.innerHTML = '<span class="voice-pulse"></span>🎤 Start Voice Order';
+                        status.textContent = 'Ready';
+                        status.style.background = '#28a745';
+                        transcript.style.display = 'none';
+                    }, 2000);
+                }, 3000);
+                
+            } else {
+                // Stop recording
+                voiceRecording = false;
+                btn.classList.remove('recording');
+                btn.innerHTML = '<span class="voice-pulse"></span>🎤 Start Voice Order';
+                status.textContent = 'Ready';
+                status.style.background = '#28a745';
+                transcript.style.display = 'none';
+            }
+        }
+
+        function updateGamification() {
+            // Update achievement progress based on cart/orders
+            // This would integrate with real order data in production
+            
+            // Simulate weekly challenge progress
+            const challengeFill = document.querySelector('.challenge-fill');
+            if (challengeFill) {
+                // Animate progress bar
+                let width = 33;
+                const targetWidth = Math.min(100, width + Math.random() * 20);
+                const animateProgress = () => {
+                    width = Math.min(targetWidth, width + 1);
+                    challengeFill.style.width = `${width}%`;
+                    if (width < targetWidth) {
+                        setTimeout(animateProgress, 50);
+                    }
+                };
+                setTimeout(animateProgress, 500);
+            }
+        }
+
+        function startAR() {
+            showNotification('📱 AR feature launching... (Demo mode)');
+            
+            // Simulate AR experience
+            const arPreview = document.getElementById('arPreview');
+            arPreview.innerHTML = `
+                <div style="text-align: center; padding: 30px;">
+                    <div style="font-size: 48px; margin-bottom: 20px; animation: spin3d 3s linear infinite;">🍗</div>
+                    <div style="font-weight: bold; margin-bottom: 10px;">6pc Boneless Mild Wings</div>
+                    <div style="color: #6c757d; margin-bottom: 20px;">Viewing in AR mode</div>
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button class="ar-btn" onclick="addARItem()">🛒 Add to Cart</button>
+                        <button class="ar-btn" onclick="closeAR()" style="background: #6c757d;">❌ Close AR</button>
+                    </div>
+                </div>
+                <style>
+                @keyframes spin3d {
+                    0% { transform: rotateY(0deg) rotateX(0deg); }
+                    25% { transform: rotateY(90deg) rotateX(0deg); }
+                    50% { transform: rotateY(180deg) rotateX(15deg); }
+                    75% { transform: rotateY(270deg) rotateX(0deg); }
+                    100% { transform: rotateY(360deg) rotateX(0deg); }
+                }
+                </style>
+            `;
+        }
+
+        function show3DModel() {
+            showNotification('🔄 Loading 3D model... (Demo mode)');
+            const arPreview = document.getElementById('arPreview');
+            arPreview.innerHTML = `
+                <div style="text-align: center; padding: 30px;">
+                    <div style="font-size: 56px; margin-bottom: 20px; animation: rotate3d 4s ease-in-out infinite;">🍗</div>
+                    <div style="font-weight: bold; margin-bottom: 10px;">Interactive 3D Model</div>
+                    <div style="color: #6c757d; margin-bottom: 20px;">Drag to rotate • Pinch to zoom</div>
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button class="ar-btn" onclick="addARItem()">🛒 Add to Cart</button>
+                        <button class="ar-btn" onclick="resetAR()" style="background: #6c757d;">🔄 Reset</button>
+                    </div>
+                </div>
+                <style>
+                @keyframes rotate3d {
+                    0%, 100% { transform: rotateY(0deg) rotateX(10deg) scale(1); }
+                    25% { transform: rotateY(90deg) rotateX(-5deg) scale(1.1); }
+                    50% { transform: rotateY(180deg) rotateX(10deg) scale(1); }
+                    75% { transform: rotateY(270deg) rotateX(-5deg) scale(1.1); }
+                }
+                </style>
+            `;
+        }
+
+        function addARItem() {
+            addToCartDirect({ 
+                name: '6pc Boneless Mild', 
+                price: 8.99, 
+                emoji: '🍗', 
+                desc: 'Added from AR preview' 
+            });
+            showNotification('📱 Added from AR experience!');
+        }
+
+        function closeAR() {
+            resetAR();
+            showNotification('📱 AR session closed');
+        }
+
+        function resetAR() {
+            const arPreview = document.getElementById('arPreview');
+            arPreview.innerHTML = `
+                <div class="ar-placeholder">
+                    <div class="ar-model">🍗</div>
+                    <div class="ar-controls">
+                        <button class="ar-btn" onclick="startAR()">📱 Launch AR</button>
+                        <button class="ar-btn" onclick="show3DModel()">🔄 3D View</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadRecommendations() {
+            const container = document.getElementById('recommendations');
+            const recommendations = generateRecommendations();
+            
+            container.innerHTML = recommendations.map((rec, index) => `
+                <div class="rec-card" onclick="addRecommendation('${rec.name}', ${rec.price})">
+                    <div class="rec-rank">${index + 1}</div>
+                    <div class="rec-item-header">
+                        <span class="rec-emoji">${rec.emoji}</span>
+                        <span class="rec-name">${rec.name}</span>
+                    </div>
+                    <div class="rec-reason">${rec.reason}</div>
+                    <div class="rec-stats">
+                        <span class="confidence">${rec.confidence}% Match</span>
+                        <span class="algorithm">${rec.algorithm}</span>
+                    </div>
+                    <button class="add-rec-btn">Add for ${rec.price}</button>
+                </div>
+            `).join('');
+        }
+
+        function addRecommendation(name, price) {
+            // Add to cart
+            const cartItems = document.getElementById('cartItems');
+            const newItem = document.createElement('div');
+            newItem.className = 'cart-item';
+            newItem.innerHTML = `
+                <span class="item-icon">${getEmojiForItem(name)}</span>
+                <div class="item-info">
+                    <div class="item-name">${name}</div>
+                    <div class="item-desc">AI Recommended - Perfect match!</div>
+                </div>
+                <span class="item-price">${price}</span>
+            `;
+            cartItems.appendChild(newItem);
+            
+            // Update count
+            cartCount++;
+            document.getElementById('cartCount').textContent = `${cartCount} items`;
+            
+            // Update ML accuracy
+            mlAccuracy = Math.min(99.9, mlAccuracy + 0.1);
+            document.getElementById('accuracy').textContent = `${mlAccuracy.toFixed(1)}%`;
+            
+            // Show notification
+            showNotification(`✅ ${name} added! ML accuracy: ${mlAccuracy.toFixed(1)}%`);
+            
+            // Refresh recommendations
+            setTimeout(loadRecommendations, 500);
+        }
+
+        function getEmojiForItem(name) {
+            const item = menuData.find(i => i.name === name);
+            return item ? item.emoji : '🍽️';
+        }
+
+        function loadMenu() {
+            const container = document.getElementById('menuItems');
+            const quantities = {};
+            
+            // Display menu items
+            displayMenu(menuData);
+            
+            // Setup search
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase();
+                const filtered = menuData.filter(item => 
+                    item.name.toLowerCase().includes(query) || 
+                    item.desc.toLowerCase().includes(query)
+                );
+                displayMenu(filtered);
+            });
+            
+            // Setup categories
+            document.getElementById('categories').addEventListener('click', function(e) {
+                if (e.target.classList.contains('category')) {
+                    document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    const category = e.target.dataset.category;
+                    const filtered = category === 'all' ? menuData : menuData.filter(item => item.category === category);
+                    displayMenu(filtered);
+                }
+            });
+        }
+
+        function displayMenu(items) {
+            const container = document.getElementById('menuItems');
+            container.innerHTML = items.map(item => `
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <span class="menu-emoji">${item.emoji}</span>
+                        <div class="menu-info">
+                            <div class="menu-name">${item.name}</div>
+                            <div class="menu-desc">${item.desc}</div>
+                        </div>
+                        <span class="menu-price">${item.price}</span>
+                    </div>
+                    <div class="menu-tags">
+                        ${item.tags ? item.tags.map(tag => `<span class="tag ${tag}">${getTagText(tag)}</span>`).join('') : ''}
+                    </div>
+                    <div class="menu-actions">
+                        <div class="qty-controls">
+                            <button class="qty-btn" onclick="updateQty(${item.id}, -1)">-</button>
+                            <span class="qty-display" id="qty-${item.id}">0</span>
+                            <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
+                        </div>
+                        <button class="add-btn" onclick="addToCart(${item.id})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getTagText(tag) {
+            const tags = {
+                'popular': '🔥 Popular',
+                'spicy': '🌶️ Spicy',
+                'healthy': '💚 Healthy',
+                'signature': '👑 Signature',
+                'value': '💰 Value',
+                'fresh': '🌿 Fresh'
+            };
+            return tags[tag] || tag;
+        }
+
+        const quantities = {};
+
+        function updateQty(itemId, change) {
+            const current = quantities[itemId] || 0;
+            const newQty = Math.max(0, current + change);
+            quantities[itemId] = newQty;
+            
+            const display = document.getElementById(`qty-${itemId}`);
+            if (display) {
+                display.textContent = newQty;
+                display.style.transform = 'scale(1.2)';
+                display.style.color = '#ff6b6b';
+                setTimeout(() => {
+                    display.style.transform = 'scale(1)';
+                    display.style.color = '';
+                }, 200);
+            }
+        }
+
+        function addToCart(itemId) {
+            const item = menuData.find(i => i.id === itemId);
+            const qty = quantities[itemId] || 1;
+            
+            if (!item) return;
+            
+            const cartItems = document.getElementById('cartItems');
+            for (let i = 0; i < qty; i++) {
+                const newItem = document.createElement('div');
+                newItem.className = 'cart-item';
+                newItem.innerHTML = `
+                    <span class="item-icon">${item.emoji}</span>
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-desc">${item.desc}</div>
+                    </div>
+                    <span class="item-price">${item.price}</span>
+                `;
+                cartItems.appendChild(newItem);
+                cartCount++;
+            }
+            
+            // Reset quantity
+            quantities[itemId] = 0;
+            const display = document.getElementById(`qty-${itemId}`);
+            if (display) display.textContent = '0';
+            
+            // Update cart count
+            document.getElementById('cartCount').textContent = `${cartCount} items`;
+            
+            // Show notification
+            showNotification(`${qty}x ${item.name} added to cart!`);
+            
+            // Update ML accuracy
+            mlAccuracy = Math.min(99.9, mlAccuracy + 0.05);
+            document.getElementById('accuracy').textContent = `${mlAccuracy.toFixed(1)}%`;
+            
+            // Refresh recommendations if on cart tab
+            if (currentTab === 'cart') {
+                setTimeout(loadRecommendations, 300);
+            }
+        }
+
+        function toggleChat() {
+            const chatbot = document.getElementById('chatbot');
+            const chatBtn = document.getElementById('chatBtn');
+            
+            chatOpen = !chatOpen;
+            
+            if (chatOpen) {
+                chatbot.classList.add('open');
+                chatBtn.classList.add('active');
+                chatBtn.textContent = '×';
+            } else {
+                chatbot.classList.remove('open');
+                chatBtn.classList.remove('active');
+                chatBtn.textContent = '🤖';
+            }
+        }
+
+        function sendChat() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const response = generateResponse(message);
+                addMessage(response, 'bot');
+            }, 500 + Math.random() * 1000);
+        }
+
+        function quickChat(message) {
+            addMessage(message, 'user');
+            
+            setTimeout(() => {
+                const response = generateResponse(message);
+                addMessage(response, 'bot');
+            }, 400);
+        }
+
+        function addMessage(text, sender) {
+            const messages = document.getElementById('chatMessages');
+            const message = document.createElement('div');
+            message.className = `message ${sender}`;
+            message.innerHTML = `
+                <div class="msg-avatar ${sender}">${sender === 'bot' ? '🤖' : '👤'}</div>
+                <div class="msg-text">${text}</div>
+            `;
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function generateResponse(message) {
+            const lower = message.toLowerCase();
+            
+            if (lower.includes('trending') || lower.includes('popular')) {
+                return `🔥 Trending now: Buffalo Fries (+15%), Mango Habanero (+8%), and Hot Honey Rub (+12%)! Want me to add any trending items to your cart?`;
+            } else if (lower.includes('photo') || lower.includes('picture') || lower.includes('camera')) {
+                return `📸 Use our AI Photo Recognition in the Discover tab! Just snap a photo of food and I'll identify similar items from our menu. 95% accuracy rate!`;
+            } else if (lower.includes('voice') || lower.includes('speak') || lower.includes('say')) {
+                return `🎤 Try voice ordering in the Discover tab! Just say what you want like "I want mild wings with fries" and I'll add it to your cart automatically!`;
+            } else if (lower.includes('ar') || lower.includes('3d') || lower.includes('preview')) {
+                return `📱 Check out our AR Menu Preview! See items in 3D before ordering. It's like having the food right in front of you! Available in Discover tab.`;
+            } else if (lower.includes('achievement') || lower.includes('challenge') || lower.includes('game')) {
+                return `🏆 You've unlocked Wing Master! Current challenge: Try 3 new sauce combinations (1/3 completed). Complete it for 500 bonus points!`;
+            } else if (lower.includes('taste') || lower.includes('profile') || lower.includes('preference')) {
+                return `🎯 Your AI Taste Profile shows you're a Mild Lover & Cheese Fanatic! Check the radar chart in Discover tab - 8.7/10 accuracy based on 23 orders.`;
+            } else if (lower.includes('real-time') || lower.includes('real time')) {
+                return `🔄 Yes! Our recommendations update in real-time as you add items. Current cart has ${realtimeEngine.currentCart.length} items. ML accuracy: ${mlAccuracy.toFixed(1)}%`;
+            } else if (lower.includes('how does') || lower.includes('how it works')) {
+                return "🧠 I analyze your cart in real-time using collaborative filtering, content-based recommendations, and business rules. Plus photo recognition, voice ordering, and AR previews!";
+            } else if (lower.includes('cart') || lower.includes('current')) {
+                const cartAnalysis = realtimeEngine.analyzeCart();
+                return `🛒 Current cart: ${cartAnalysis.items.length} items (${cartAnalysis.categories.join(', ')}). Missing: ${cartAnalysis.missingCategories.join(', ')}. Value: ${cartAnalysis.totalValue.toFixed(2)}`;
+            } else if (lower.includes('recommend') || lower.includes('wings')) {
+                return `🎯 Based on your real-time cart analysis, I'd recommend our Sweet BBQ Blaze sauce - it pairs perfectly with mild wings! 94% customer satisfaction rate! Current cart: ${realtimeEngine.currentCart.length} items.`;
+            } else if (lower.includes('spicy')) {
+                const spiceLevel = realtimeEngine.detectSpicePreference();
+                return `🌶️ Based on your ${spiceLevel} spice preference, try Mango Habanero or Hot Honey Rub! Real-time analysis shows these pair well with your current cart.`;
+            } else if (lower.includes('combos')) {
+                return "🍱 Great combo choices! Chicken Sub Combo ($11.99) or 10pc Wing Combo ($15.99) - both include fries and drink!";
+            } else if (lower.includes('points')) {
+                return `💎 You have ${loyaltyPoints} points! Gold members get real-time personalized offers. 20% off sides detected for your current cart!`;
+            } else if (lower.includes('accuracy') || lower.includes('ml')) {
+                return `🧠 Real-time ML accuracy: ${mlAccuracy.toFixed(1)}%! I learn from every interaction. Current algorithm mix: 40% collaborative filtering, 35% content-based, 25% business rules.`;
+            } else {
+                const features = ['photo recognition', 'voice ordering', 'AR previews', 'real-time recommendations', 'taste profiling', 'achievements'];
+                const randomFeature = features[Math.floor(Math.random() * features.length)];
+                return `I'm your advanced AI assistant with ${randomFeature} and more! Check out the Discover tab for cutting-edge features like 📸 photo recognition, 🎤 voice ordering, and 📱 AR previews. What interests you? 😊`;
+            }
+        }
+
+
+// Select delivery method
+        function selectDelivery(method) {
+            selectedDelivery = method;
+            const info = document.getElementById('deliveryInfo');
+            
+            if (method === 'pickup') {
+                info.innerHTML = `
+                    <div style="font-size: 24px; margin-bottom: 10px;">🏃‍♂️</div>
+                    <div style="font-weight: bold; margin-bottom: 5px;">Smart Pickup Selected</div>
+                    <div style="font-size: 12px; color: #6c757d;">AI-optimized timing based on kitchen load</div>
+                    <div style="margin-top: 15px; font-weight: bold; color: #4ade80;">96% Accuracy • 12-18 min</div>
+                `;
+            } else {
+                info.innerHTML = `
+                    <div style="font-size: 24px; margin-bottom: 10px;">🚚</div>
+                    <div style="font-weight: bold; margin-bottom: 5px;">AI Delivery Selected</div>
+                    <div style="font-size: 12px; color: #6c757d;">Route optimized with traffic analysis</div>
+                    <div style="margin-top: 15px; font-weight: bold; color: #ff6b6b;">94% Accuracy • 25-35 min</div>
+                `;
+            }
+            
+            showNotification(`🚀 ${method.charAt(0).toUpperCase() + method.slice(1)} selected!`);
+        }
+
+        function redeemReward(reward, points) {
+            if (loyaltyPoints >= points) {
+                loyaltyPoints -= points;
+                showNotification(`🎉 ${reward} redeemed! ${points} points used.`);
+                
+                // Add to cart
+                const cartItems = document.getElementById('cartItems');
+                const newItem = document.createElement('div');
+                newItem.className = 'cart-item';
+                newItem.innerHTML = `
+                    <span class="item-icon">🎁</span>
+                    <div class="item-info">
+                        <div class="item-name">${reward}</div>
+                        <div class="item-desc">Loyalty reward - Points redeemed</div>
+                    </div>
+                    <span class="item-price">FREE</span>
+                `;
+                cartItems.appendChild(newItem);
+                
+                cartCount++;
+                document.getElementById('cartCount').textContent = `${cartCount} items`;
+            } else {
+                showNotification(`❌ Not enough points! Need ${points - loyaltyPoints} more.`);
+            }
+        }
+
+        function showNotification(text) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = text;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Chat input enter key
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChat();
+            }
+        });
+
+        // Initialize app with real-time capabilities
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Wings R Us Advanced AI App Started');
+            
+            // Load initial recommendations
+            loadRecommendations();
+            
+            // Initialize Discover tab content if needed
+            if (document.getElementById('tasteRadar')) {
+                loadDiscoverContent();
+            }
+            
+            // Real-time trending updates
+            setInterval(() => {
+                if (currentTab === 'discover') {
+                    // Update trending numbers randomly for demo
+                    trendingData.forEach(item => {
+                        item.orders += Math.floor(Math.random() * 3);
+                    });
+                    loadTrendingItems();
+                }
+            }, 10000); // Every 10 seconds
+            
+            // Real-time ML accuracy updates
+            setInterval(() => {
+                mlAccuracy = Math.min(99.9, mlAccuracy + 0.01);
+                document.getElementById('accuracy').textContent = `${mlAccuracy.toFixed(1)}%`;
+                
+                // Add subtle pulse animation to show real-time updates
+                const accuracyElement = document.getElementById('accuracy');
+                accuracyElement.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    accuracyElement.style.transform = 'scale(1)';
+                }, 200);
+            }, 3000); // Every 3 seconds for demo effect
+            
+            // Real-time cart monitoring
+            const cartObserver = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList' && mutation.target.id === 'cartItems') {
+                        console.log('📊 Real-time cart change detected');
+                        
+                        // Extract current cart items
+                        const cartItemElements = document.querySelectorAll('#cartItems .cart-item .item-name');
+                        const currentCartItems = Array.from(cartItemElements).map(el => el.textContent.trim());
+                        
+                        // Update real-time engine
+                        if (JSON.stringify(currentCartItems) !== JSON.stringify(realtimeEngine.currentCart)) {
+                            console.log('🔄 Updating real-time engine with new cart state');
+                            realtimeEngine.updateCart(currentCartItems);
+                        }
+                    }
+                });
+            });
+            
+            // Start monitoring cart changes
+            const cartContainer = document.getElementById('cartItems');
+            if (cartContainer) {
+                cartObserver.observe(cartContainer, { childList: true });
+                console.log('👁️ Real-time cart monitoring active');
+            }
+            
+            // Add welcome message
+            setTimeout(() => {
+                addMessage("👋 Welcome! I now have advanced AI features like 📸 photo recognition, 🎤 voice ordering, and 📱 AR previews! Check out the new Discover tab! 🧠", 'bot');
+            }, 1000);
+            
+            // Demo advanced capabilities
+            setTimeout(() => {
+                addMessage("🚀 NEW: Try saying 'show me trending items' or 'how does photo recognition work' - I have tons of new features to explore!", 'bot');
+            }, 3000);
+            
+            console.log('✅ Advanced AI features loaded!');
+            console.log('🎯 Cart monitoring: Active');
+            console.log('🧠 ML accuracy tracking: Active');
+            console.log('⚡ Real-time updates: Enabled');
+            console.log('📸 Photo recognition: Ready');
+            console.log('🎤 Voice ordering: Standby');
+            console.log('📱 AR previews: Available');
+            console.log('🏆 Gamification: Active');
+            console.log('🔥 Trending analysis: Live');
+        });
+
+        // Real-time demo function
+        function demonstrateRealTime() {
+            console.log('🎪 Demonstrating real-time capabilities...');
+            
+            showNotification('🎯 Real-time demo: Watch recommendations change!');
+            
+            // Simulate adding different items to show real-time changes
+            setTimeout(() => {
+                console.log('Demo: Adding spicy item...');
+                realtimeEngine.currentCart.push('Buffalo Fries');
+                loadRecommendations();
+                showNotification('🌶️ Added spicy item - see how recommendations changed!');
+            }, 2000);
+            
+            setTimeout(() => {
+                console.log('Demo: Removing item...');
+                realtimeEngine.currentCart.pop();
+                loadRecommendations();
+                showNotification('🔄 Removed item - recommendations adapted!');
+            }, 4000);
+        }
+
+        // Enhanced keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey) {
+                if (e.key === 'R') {
+                    e.preventDefault();
+                    loadRecommendations();
+                    showNotification('🎯 Real-time recommendations refreshed!');
+                } else if (e.key === 'D') {
+                    e.preventDefault();
+                    demonstrateRealTime();
+                } else if (e.key === 'A') {
+                    e.preventDefault();
+                    console.log('🧠 Real-time cart analysis:', realtimeEngine.analyzeCart());
+                    showNotification('🔍 Cart analysis logged to console!');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
