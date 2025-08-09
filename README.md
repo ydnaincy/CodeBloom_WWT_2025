@@ -9,9 +9,10 @@
 
 ## 🚀 Live Demo & Quick Access
 
-- 🌐 **[Try Live Demo](App.html)** - Interactive food ordering interface
-- 📊 **[Open in Colab](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBloom_CodeBase.ipynb)** - Complete ML pipeline
-- 🎨 **[View Wireframe](wireframe.html)** - UI/UX design prototype
+- 🌐 **[Try Live Demo](https://ydnaincy.github.io/proo/App.html)** – Interactive food ordering interface  
+- 📊 **[Open in Colab](https://colab.research.google.com/github/ydnaincy/proo/blob/main/CodeBloom_CodeBase.ipynb)** – Complete ML pipeline  
+- 🎨 **[View Wireframe](https://ydnaincy.github.io/proo/wireframe.html)** – UI/UX design prototype
+
 
 ## ✨ Key Features
 
