@@ -1,0 +1,18 @@
+{
+  "strict_looo": {
+    "num_eval_orders": 5000,
+    "Recall@1": 0.8716,
+    "Recall@2": 0.8738,
+    "Recall@3": 0.874,
+    "MAP@3": 0.8728,
+    "NDCG@3": 0.8731
+  },
+  "temporal": {
+    "num_eval_orders": 8000,
+    "Recall@1": 0.8498,
+    "Recall@2": 0.8515,
+    "Recall@3": 0.8525,
+    "MAP@3": 0.851,
+    "NDCG@3": 0.8514
+  }
+}
