@@ -33,8 +33,14 @@
 | **Temporal Validation** | 8K orders | **84.98%** | **85.25%** | **+12.8% cross-sell** |
 
 ![Performance Visualizations](images/images/cart_size_hist.png)
+
+
 **System Architecture** 
+
+
 ![Uploading ChatGPT Image Aug 9, 2025, 01_37_54 PM.png…]()
+
+
 **Stages**
 1. **Ingestion** → `order_data.csv`, `test_data_question.csv`
 2. **Cleaning** → item parsing, deduping, NA handling
