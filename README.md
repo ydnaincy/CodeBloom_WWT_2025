@@ -127,8 +127,7 @@ Your CSV should have these columns:
 ├── 🌐 App.html                     # Modern web application
 ├── 📊 CodeBloom_CodeBase.ipynb     # Complete ML pipeline  
 ├── 🎨 wireframe.html               # UI/UX prototype
-├── 📈 CodeBloom_RecommendationOutputSheet_MAX.xlsx    # Results (87.16% accuracy)
-├── 📈 CodeBloom_RecommendationOutputSheet_TUNED.xlsx  # Balanced results 
+├── 📈 CodeBloom_RecommendationOutputSheet.xlsx    # Results (87.16% accuracy)
 ├── 📄 codebase_datacleaning_EDA.csv    # Processed dataset
 ├── 🎯 recommendation_output_max.csv     # Raw scores (max)
 ├── 🎯 recommendation_output_tuned.csv   # Raw scores (tuned)
