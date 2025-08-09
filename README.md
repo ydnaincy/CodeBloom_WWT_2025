@@ -1,4 +1,5 @@
-# 🍗 Wings R Us AI — Advanced Food Recommendation Engine
+# 🍗 Wings R Us AI — Advanced Food Recommendation Engine![Uploading ChatGPT Image Aug 9, 2025, 01_37_54 PM.png…]()
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -14,7 +15,8 @@
 - 🎨 **[View Wireframe](https://ydnaincy.github.io/proo/wireframe.html)** – UI/UX design prototype
 
 
-## ✨ Key Features
+## ✨ Key Features![Uploading latency_breakdown.png…]()
+
 
 🤖 **AI-Powered Recommendations** - Real-time ML engine with 87.16% accuracy  
 📱 **Modern Web App** - Responsive design with glassmorphism UI  
