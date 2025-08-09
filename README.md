@@ -124,14 +124,17 @@ Your CSV should have these columns:
 
 ```
 📁 wings-r-us-ai/
-├── 🌐 App.html                     # Modern web application
-├── 📊 CodeBloom_CodeBase.ipynb     # Complete ML pipeline  
-├── 🎨 wireframe.html               # UI/UX prototype
-├── 📈 CodeBloom_RecommendationOutputSheet.xlsx    # Results (87.16% accuracy)
-├── 📄 codebase_datacleaning_EDA.csv    # Processed dataset
-├── 🎯 recommendation_output_max.csv     # Raw scores (max)
-├── 🎯 recommendation_output_tuned.csv   # Raw scores (tuned)
-└── 📁 images/images/                    # Performance charts
+
+├── 📁 images/images/                               # Performance charts
+├── 🌐 App.html                                     # Modern web application   
+├── 📄 CodeBase_README.md                           # Colab-specific README
+├── 📊 CodeBloom_CodeBase.ipynb                     # Complete ML pipeline
+├── 📄 codebase_datacleaning_EDA.csv                # Processed dataset
+├── 📈 CodeBloom_RecommendationOutputSheet.xlsx     # Results (87.16% accuracy)
+├── 📄 License                         
+├── 🎯 README.md                                    # Main project description
+├── 🎯 requirements.txt
+└── 🎨 wireframe.html                               # UI/UX prototype
 ```
 
 ## 💼 Business Impact
