@@ -47,6 +47,24 @@
 5. **Recommendation** → blended scores, backoff to popularity, optional **MMR**
 6. **Evaluation** → Strict LOO + Temporal; Recall@K / MAP@3 / NDCG@3
 7. **Outputs** → `Recommendation_Output_MAX.xlsx`, `Recommendation_Output_TUNED.xlsx`, metrics JSON/CSV
+## 📈 Business Value Proposition
+
+| **Business Objective** | **Challenge in QSR Industry** | **Our AI-Powered Solution** | **Expected Impact** |
+|------------------------|--------------------------------|-----------------------------|----------------------|
+| **Increase AOV** | Upselling is inconsistent and generic | Hybrid recommender: co-visitation + contextual weighting | **+6–12% AOV uplift** (simulated) |
+| **Boost Retention & Loyalty** | Loyalty programs lack personalization | Taste-profile recs for registered/eClub members | Higher repeat purchase rate |
+| **Promote High-Margin / Seasonal SKUs** | Limited visibility for priority items | Weighted blending to gently prioritize target SKUs | Increased margin contribution |
+| **Regional Relevance** | One-size-fits-all ignores local tastes | Store/region/occasion-aware models | Better conversion by location |
+| **Frictionless Checkout** | Slow/irrelevant recs hurt completion | Sub-200ms inference, POS & app-ready | Lower abandonment, smoother UX |
+## 🧭 Stakeholder Benefits
+
+| **Stakeholder** | **What They Get** | **Why It Matters** |
+|-----------------|-------------------|--------------------|
+| **Customers** | Relevant, timely add-ons | Faster decisions, better experience |
+| **Store Managers** | Location-tuned recommendations | Higher ticket size without extra training |
+| **Marketing** | Levers for promos / seasonal SKUs | Push high-margin items without hurting UX |
+| **Data/Tech** | Simple, explainable pipeline | Low ops burden, fast iteration |
+| **Leadership** | Clear KPIs & uplift metrics | Direct line of sight to revenue impact |
 
 ## 🎯 Core Algorithm
 
