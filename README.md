@@ -1,4 +1,4 @@
-# 🍗 Wings R Us AI — Advanced Food Recommendation Engine![Uploading ChatGPT Image Aug 9, 2025, 01_37_54 PM.png…]()
+# 🍗 Wings R Us AI — Advanced Food Recommendation Engine<img width="1024" height="1536" alt="ChatGPT Image Aug 9, 2025, 01_37_54 PM" src="https://github.com/user-attachments/assets/61af4773-08be-4405-9691-aaa45851fe7f" />
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -15,7 +15,7 @@
 - 🎨 **[View Wireframe](https://ydnaincy.github.io/proo/wireframe.html)** – UI/UX design prototype
 
 
-## ✨ Key Features![Uploading latency_breakdown.png…]()
+## ✨ Key Features
 
 
 🤖 **AI-Powered Recommendations** - Real-time ML engine with 87.16% accuracy  
@@ -33,6 +33,16 @@
 | **Temporal Validation** | 8K orders | **84.98%** | **85.25%** | **+12.8% cross-sell** |
 
 ![Performance Visualizations](images/images/cart_size_hist.png)
+**System Architecture** 
+![Uploading ChatGPT Image Aug 9, 2025, 01_37_54 PM.png…]()
+**Stages**
+1. **Ingestion** → `order_data.csv`, `test_data_question.csv`
+2. **Cleaning** → item parsing, deduping, NA handling
+3. **Co-visitation** → global + context maps (channel, subchannel, occasion, store, customer type) + popularity
+4. **Normalization & Weighting** → reduce head bias, blend contexts (tuned W)
+5. **Recommendation** → blended scores, backoff to popularity, optional **MMR**
+6. **Evaluation** → Strict LOO + Temporal; Recall@K / MAP@3 / NDCG@3
+7. **Outputs** → `Recommendation_Output_MAX.xlsx`, `Recommendation_Output_TUNED.xlsx`, metrics JSON/CSV
 
 ## 🎯 Core Algorithm
 
