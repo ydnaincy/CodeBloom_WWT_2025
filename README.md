@@ -1,4 +1,4 @@
-# 🍗 Wings R Us AI — Advanced Food Recommendation Engine<img width="1024" height="1536" alt="ChatGPT Image Aug 9, 2025, 01_37_54 PM" src="https://github.com/user-attachments/assets/61af4773-08be-4405-9691-aaa45851fe7f" />
+# 🍗 Wings R Us AI — Advanced Food Recommendation Engine
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -32,11 +32,13 @@
 | **Strict Evaluation** | 5K orders | **87.16%** | **87.40%** | **+14.5% revenue lift** |
 | **Temporal Validation** | 8K orders | **84.98%** | **85.25%** | **+12.8% cross-sell** |
 
+
 ![Performance Visualizations](images/images/cart_size_hist.png)
 
 
-**System Architecture** 
+## 🌐 System Architecture
 
+<img width="1024" height="1536" alt="ChatGPT Image Aug 9, 2025, 01_37_54 PM" src="https://github.com/user-attachments/assets/61af4773-08be-4405-9691-aaa45851fe7f" />
 
 
 **Stages**
@@ -47,6 +49,7 @@
 5. **Recommendation** → blended scores, backoff to popularity, optional **MMR**
 6. **Evaluation** → Strict LOO + Temporal; Recall@K / MAP@3 / NDCG@3
 7. **Outputs** → `Recommendation_Output_MAX.xlsx`, `Recommendation_Output_TUNED.xlsx`, metrics JSON/CSV
+   
 ## 📈 Business Value Proposition
 
 | **Business Objective** | **Challenge in QSR Industry** | **Our AI-Powered Solution** | **Expected Impact** |
@@ -56,6 +59,7 @@
 | **Promote High-Margin / Seasonal SKUs** | Limited visibility for priority items | Weighted blending to gently prioritize target SKUs | Increased margin contribution |
 | **Regional Relevance** | One-size-fits-all ignores local tastes | Store/region/occasion-aware models | Better conversion by location |
 | **Frictionless Checkout** | Slow/irrelevant recs hurt completion | Sub-200ms inference, POS & app-ready | Lower abandonment, smoother UX |
+
 ## 🧭 Stakeholder Benefits
 
 | **Stakeholder** | **What They Get** | **Why It Matters** |
@@ -65,6 +69,8 @@
 | **Marketing** | Levers for promos / seasonal SKUs | Push high-margin items without hurting UX |
 | **Data/Tech** | Simple, explainable pipeline | Low ops burden, fast iteration |
 | **Leadership** | Clear KPIs & uplift metrics | Direct line of sight to revenue impact |
+
+
 
 ## 🎯 Core Algorithm
 
