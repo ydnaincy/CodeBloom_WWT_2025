@@ -27,6 +27,70 @@ jupyter notebook CodeBloom_CodeBase.ipynb
 ```
 
 ## 🎯 What's Inside the Notebook
+flowchart LR
+    %% LAYER TITLES
+    subgraph L1[Layer 1 · Data Sources]
+      A[Historical Orders\norder_data.csv]
+      B[Test Data / Checkout Events\ntest_data_question.csv]
+      C[External Context\nChannel·Subchannel·Occasion·Store·Customer Type]
+    end
+
+    subgraph L2[Layer 2 · Preprocessing]
+      D[Data Cleaning\n• parse ORDERS (| , ; / JSON)\n• trim & dedupe\n• NA handling]
+      E[Feature Extraction\n• items per order\n• cart size]
+    end
+
+    subgraph L3[Layer 3 · Models]
+      F1[Global Co-visitation Map]
+      F2[Context Maps\nChannel · Subchannel · Occasion · Store · Cust Type]
+      F3[Popularity Counts]
+      F4[Weighted Blending (W)\n+ Normalization]
+      F5[(Optional) MMR Diversity]
+    end
+
+    subgraph L4[Layer 4 · Evaluation]
+      G1[Strict Leave-One-Out]
+      G2[Temporal Holdout\n(train 90% → test 10%)]
+      G3[Metrics\nRecall@K · MAP@3 · NDCG@3]
+    end
+
+    subgraph L5[Layer 5 · Delivery]
+      H1[Outputs\nMAX.xlsx · TUNED.xlsx\nmetrics.json · metrics.csv]
+      H2[Streamlit Demo / API\n(POS-ready JSON)]
+    end
+
+    %% FLOWS
+    A --> D
+    B --> H1
+    C --> E
+    D --> E
+    E --> F1
+    E --> F2
+    E --> F3
+    F1 --> F4
+    F2 --> F4
+    F3 --> F4
+    F4 --> F5
+    F4 --> G1
+    F4 --> G2
+    F5 --> H1
+    F5 --> H2
+    G1 --> G3
+    G2 --> G3
+    G3 --> H1
+
+    %% STYLES
+    classDef data fill:#e7f0ff,stroke:#4a78ff,stroke-width:1px,color:#0b2a6b;
+    classDef proc fill:#fff7e6,stroke:#ffab00,stroke-width:1px,color:#5a3b00;
+    classDef model fill:#e8fff1,stroke:#12a454,stroke-width:1px,color:#0b3d24;
+    classDef eval fill:#f3e8ff,stroke:#7a3cff,stroke-width:1px,color:#2a0d66;
+    classDef deploy fill:#ffe8ea,stroke:#ff4d6d,stroke-width:1px,color:#6b0b1f;
+
+    class A,B,C data;
+    class D,E proc;
+    class F1,F2,F3,F4,F5 model;
+    class G1,G2,G3 eval;
+    class H1,H2 deploy;
 
 ### 📊 **Section 1: Data Analysis**
 - Data quality assessment and cleaning
