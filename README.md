@@ -1,4 +1,4 @@
-# 🍗 Wings R Us AI — Advanced Food Recommendation Engine
+# 🍗 Wings R Us  — Advanced Food Recommendation Engine
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,7 +6,20 @@
 [![Accuracy](https://img.shields.io/badge/Recall%40K-87.16%25-success.svg)](#)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBloom_CodeBase.ipynb)
 
-> **Enterprise-grade AI recommendation system** delivering personalized food suggestions with **87.16% accuracy** and modern web interface.
+> **A production-ready, multi-context co-visitation recommendation system for Wings R Us restaurant chain. Built with advanced machine learning techniques for personalized menu recommendations.**
+
+
+## 🎯 Overview
+
+Wings R Us AI is a comprehensive recommendation engine designed to enhance customer experience through intelligent menu suggestions. The system analyzes customer purchasing patterns, contextual factors, and co-visitation data to deliver personalized recommendations that increase average order value and customer satisfaction.
+
+### Key Features
+- **Multi-Context Analysis**: Leverages order channel, occasion, store location, and customer type
+- **Advanced Co-Visitation**: Sophisticated item-to-item collaborative filtering
+- **MMR Diversification**: Balances accuracy with recommendation diversity
+- **Production-Ready**: Complete pipeline from data ingestion to business intelligence outputs
+- **Real-Time Capable**: Optimized for live recommendation serving
+
 
 ## 🚀 Live Demo & Quick Access
 
@@ -25,12 +38,13 @@
 ⚡ **Ultra-Fast** - <100ms response time, processes 500K+ orders  
 📊 **Business Intelligence** - Comprehensive analytics dashboard  
 
+
 ## 📊 Performance Metrics
 
-| Method | Dataset | Recall@1 | Recall@3 | Business Impact |
-|--------|---------|----------|----------|-----------------|
-| **Strict Evaluation** | 5K orders | **87.16%** | **87.40%** | **+14.5% revenue lift** |
-| **Temporal Validation** | 8K orders | **84.98%** | **85.25%** | **+12.8% cross-sell** |
+| Method | Dataset | Recall@3 | Business Impact |
+|--------|---------|----------|-----------------|
+| **Strict Evaluation** | 5K orders | **36.56%** | **+14.5% revenue lift** |
+| **Temporal Validation** | 8K orders | **37.98%** | **+12.8% cross-sell** |
 
 
 ![Performance Visualizations](images/images/cart_size_hist.png)
@@ -41,7 +55,7 @@
 <img width="1024" height="1536" alt="ChatGPT Image Aug 9, 2025, 01_37_54 PM" src="https://github.com/user-attachments/assets/61af4773-08be-4405-9691-aaa45851fe7f" />
 
 
-**Stages**
+##  Stages
 1. **Ingestion** → `order_data.csv`, `test_data_question.csv`
 2. **Cleaning** → item parsing, deduping, NA handling
 3. **Co-visitation** → global + context maps (channel, subchannel, occasion, store, customer type) + popularity
@@ -83,28 +97,22 @@
 - 👤 **Customer Type** (10%) - Segment behaviors
 - 📊 **Subchannel** (5%) - Granular variations
 
+
 ## 🚀 Quick Start
 
-### 1. Try the Web App (Instant)
-```bash
-# Just open in browser - no installation needed!
-open App.html
-```
+### Option A: Google Colab (Recommended)
+1. Click the **Open In Colab** badge above
+2. Upload your CSV dataset using the file upload widget
+3. Configure parameters in the setup cells
+4. Execute all cells sequentially
+5. Download generated reports and visualizations
 
-### 2. Run ML Pipeline in Colab
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBloom_CodeBase.ipynb)
-
-1. Click "Open in Colab"
-2. Upload your CSV data
-3. Run all cells
-4. Download results
-
-### 3. Local Development
+### Option B: Local Environment
 ```bash
 git clone https://github.com/ydnaincy/wings-r-us-ai.git
 cd wings-r-us-ai
 pip install -r requirements.txt
-python -m http.server 8000  # Open http://localhost:8000/App.html
+jupyter notebook CodeBloom_CodeBase.ipynb
 ```
 
 ## 📋 Data Format
@@ -129,20 +137,84 @@ Your CSV should have these columns:
 ├── 🌐 App.html                                     # Modern web application   
 ├── 📄 CodeBase_README.md                           # Colab-specific README
 ├── 📊 CodeBloom_CodeBase.ipynb                     # Complete ML pipeline
-├── 📄 codebase_datacleaning_EDA.csv                # Processed dataset
-├── 📈 CodeBloom_RecommendationOutputSheet.xlsx     # Results (87.16% accuracy)
+├── 📄 CodeBloom_CodeBase_Datacleaning.csv          # Processed dataset
+├── 📈 CodeBloom_RecommendationOutputSheet.xlsx     # Results (36.5% accuracy)
 ├── 📄 License                         
 ├── 🎯 README.md                                    # Main project description
 ├── 🎯 requirements.txt
 └── 🎨 wireframe.html                               # UI/UX prototype
 ```
 
-## 💼 Business Impact
 
-- 📈 **Revenue Lift**: 14.5% improvement over baseline
-- 🛒 **Cross-selling**: 23% increase in success rate  
-- ⚡ **Performance**: 99.8% recommendation coverage
-- 🎯 **ROI**: 300-500% within 12 months
+## 🔧 Advanced Configuration
+
+### Memory Optimization
+For large datasets, enable memory-efficient processing:
+```python
+MEMORY_EFFICIENT_MODE = True
+BATCH_SIZE = 1000
+ENABLE_INCREMENTAL_LEARNING = True
+```
+
+### Production Deployment
+```python
+PRODUCTION_CONFIG = {
+    'enable_caching': True,
+    'cache_ttl_hours': 24,
+    'max_recommendations_per_request': 10,
+    'enable_fallback_rules': True,
+    'monitoring_enabled': True
+}
+```
+
+## 🛠️ Technical Architecture
+
+### Pipeline Components
+
+1. **Data Preprocessing**
+   - Data quality validation and cleaning
+   - Item standardization and deduplication
+   - Temporal sequence analysis
+
+2. **Feature Engineering**
+   - Multi-context feature extraction
+   - Co-visitation matrix construction
+   - Temporal weighting application
+
+3. **Model Training**
+   - Collaborative filtering implementation
+   - Hyperparameter optimization
+   - Cross-validation and evaluation
+
+4. **Recommendation Generation**
+   - Candidate item scoring
+   - MMR diversification
+   - Confidence calibration
+
+5. **Business Intelligence**
+   - Performance analytics
+   - A/B testing frameworks
+   - Monitoring dashboards
+
+---
+
+## 🚀 Business Applications & Integration
+
+### Generated Outputs
+The system produces ready-to-use recommendation files:
+- **Excel Reports**: `CodeBloom_RecommendationOutputSheet_MAX.xlsx` & `CodeBloom_RecommendationOutputSheet_TUNED.xlsx`
+- **CSV Files**: `recommendation_output_max.csv` & `recommendation_output_tuned.csv`
+- **Cleaned Dataset**: `codebase_cleaning_EDA.csv`
+- **Performance Visualizations**: PNG charts and analysis reports
+
+### Integration Scenarios
+- **E-commerce Platform**: Import CSV recommendations into web systems
+- **Mobile App**: Load recommendation data for personalized menu sections
+- **In-Store Displays**: Use generated reports for menu board optimization
+- **Marketing Campaigns**: Leverage Excel outputs for targeted promotional campaigns
+- **Business Intelligence**: Utilize performance charts for strategic decision making
+
+---
 
 ## 🛠️ Technology Stack
 
@@ -201,3 +273,29 @@ MIT License - see [LICENSE](LICENSE) for details.
   <strong>🚀 Built for the future of food recommendation systems</strong><br>
   <sub>Made with ❤️ by <a href="https://github.com/ydnaincy">Naincy Yadav</a> & <a href="https://github.com/Simer-khurmi">Simer Khurmi</a></sub>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
