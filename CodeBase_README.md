@@ -11,7 +11,8 @@
 ## 🚀 Quick Start
 
 ### Option 1: Google Colab (Recommended)
-[![Open In Colab](https://colab.research.google.com/drive/1tv6d8OMdtUf4gYuAss-9-o6qvsMs4JvH?usp=sharing)- FOR ML PIPLINE
+- 📊 **[Open in Colab](https://colab.research.google.com/drive/1tv6d8OMdtUf4gYuAss-9-o6qvsMs4JvH?usp=sharing)** – Complete ML pipeline
+- - 📊 **[Open in Colab](https://colab.research.google.com/drive/1L1SCixunLbwRi11yKgCdyueT3CAB4OXq?usp=sharing)** – DATA CLEANING AND EDA  
 
 
 1. **Click "Open in Colab"** button above
