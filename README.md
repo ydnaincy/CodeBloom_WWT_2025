@@ -23,9 +23,9 @@ Wings R Us AI is a comprehensive recommendation engine designed to enhance custo
 
 ## 🚀 Live Demo & Quick Access
 
-- 🌐 **[Try Live Demo](https://ydnaincy.github.io/proo/App.html)** – Interactive food ordering interface  
+- 🌐 **[Try Live Demo](https://ydnaincy.github.io/CodeBloom_WWT_2025/App.html)** – Interactive food ordering interface  
 - 📊 **[Open in Colab](https://colab.research.google.com/drive/1tv6d8OMdtUf4gYuAss-9-o6qvsMs4JvH?usp=sharing)** – Complete ML pipeline  
-- 🎨 **[View Wireframe](https://ydnaincy.github.io/proo/wireframe.html)** – UI/UX design prototype
+- 🎨 **[View Wireframe](https://ydnaincy.github.io/CodeBloom_WWT_2025/wireframe.html)** – UI/UX design prototype
 
 
 ## ✨ Key Features
