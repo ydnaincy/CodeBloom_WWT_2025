@@ -11,7 +11,8 @@
 ## 🚀 Quick Start
 
 ### Option 1: Google Colab (Recommended)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBase_Main.ipynb)
+[![Open In Colab](https://colab.research.google.com/drive/1tv6d8OMdtUf4gYuAss-9-o6qvsMs4JvH?usp=sharing)- FOR ML PIPLINE
+
 
 1. **Click "Open in Colab"** button above
 2. **Upload your CSV data** to the Colab environment  
