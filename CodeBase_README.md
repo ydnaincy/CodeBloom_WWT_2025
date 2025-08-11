@@ -76,7 +76,7 @@ jupyter notebook CodeBloom_CodeBase.ipynb
 
 | Configuration | Recall@3 | Business Impact |
 |---------------|----------|-----------------|
-| **MAX** | **36.5%%** | **Premium customers** |
+| **MAX** | **36.5%** | **Premium customers** |
 | **TUNED** | **35.8%** | **+23% diversity** |
 
 ## 📄 Generated Output Files
@@ -104,12 +104,8 @@ jupyter notebook CodeBloom_CodeBase.ipynb
 
 ## The system generates comprehensive business intelligence visualizations:
 
-## Recommendation Accuracy Curve: 
-Illustrates how model accuracy changes with different top-N recommendation thresholds.
 
-<img width="976" height="590" alt="image 4" src="https://github.com/user-attachments/assets/631415d6-099d-4f06-928c-703c9b64fbf3" />
-Cart Size Distribution: Most customer orders contain 1–2 items, with frequency dropping sharply as cart size increases.
-\\
+
 
 
 ## Co-visitation Heatmap (Top 20): 
@@ -121,14 +117,19 @@ Shows the most frequently purchased item pairs, highlighting popular menu combin
 
 Classic power-law distribution enables effective cold-start handling through popularity-based backfill strategies.
 
-<img width="727" height="478" alt="image 2" src="https://github.com/user-attachments/assets/b4e1168f-f3e7-4ea3-bfe5-1d7afbcedf31" />
+<img width="717" height="469" alt="Screenshot (283)" src="https://github.com/user-attachments/assets/765ab232-24b8-48a5-9b55-bfddeae4e9ca" />
+
 ## Cart Size Distribution:
-Most customer orders contain 1–2 items, with frequency dropping sharply as cart size increases.
 
-<img width="730" height="480" alt="image 1" src="https://github.com/user-attachments/assets/675c0f61-bb94-4254-ba1a-fa49518da08f" />
-
+Cart Size Distribution: Most customer orders contain 1–2 items, with frequency dropping sharply as cart size increases.
 
 
+<img width="726" height="474" alt="Screenshot (284)" src="https://github.com/user-attachments/assets/6ddcc8a4-e67b-4592-9f49-43b2c8987f83" />
+
+
+## Top-20 Popular Items: 
+Ranks the most frequently ordered menu items, spotlighting customer favorites.
+<img width="961" height="594" alt="Screenshot (282)" src="https://github.com/user-attachments/assets/8d5ad2a7-7b14-4f67-bfb5-5c22ef260f13" />
 
 
 
