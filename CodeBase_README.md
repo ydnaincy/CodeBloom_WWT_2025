@@ -49,7 +49,7 @@ jupyter notebook CodeBloom_CodeBase.ipynb
 - Business confidence calibration
 
 ### 📄 **Section 4: Output Generation**
-- Excel recommendation files (MAX & TUNED configs)
+- Excel recommendation files 
 - Performance visualization charts
 - Business intelligence reports
 
@@ -156,8 +156,8 @@ CONFIG = 'MAX'  # or 'TUNED'
 
 ### 4. Download Results
 ```python
-files.download('CodeBloom_RecommendationOutputSheet_MAX.xlsx')
-files.download('CodeBloom_RecommendationOutputSheet_TUNED.xlsx')
+files.download('CodeBloom_Recommendation Output Sheet.xlsx')
+
 ```
 
 ## 🛠️ Troubleshooting
