@@ -1,6 +1,6 @@
 # 🍗 Wings R Us AI — Python Colab Implementation
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBloom_CodeBase.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBase_Main.ipynb)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=flat&logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -11,7 +11,7 @@
 ## 🚀 Quick Start
 
 ### Option 1: Google Colab (Recommended)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBloom_CodeBase.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBase_Main.ipynb)
 
 1. **Click "Open in Colab"** button above
 2. **Upload your CSV data** to the Colab environment  
@@ -70,24 +70,6 @@ jupyter notebook CodeBloom_CodeBase.ipynb
 - ✅ **6 months+** of historical data
 - ✅ **<5%** missing values in key fields
 
-## ⚙️ Configuration Options
-
-### MAX Configuration (87.16% Accuracy)
-```python
-CONFIG = 'MAX'
-OPTIMIZATION_TARGET = 'accuracy'  
-CANDIDATE_POOL = 120
-MMR_LAMBDA = 1.0  # No diversity penalty
-```
-
-### TUNED Configuration (85.2% + Diversity)
-```python
-CONFIG = 'TUNED'
-OPTIMIZATION_TARGET = 'balanced'
-CANDIDATE_POOL = 100  
-MMR_LAMBDA = 0.93  # Balanced accuracy-diversity
-```
-
 ## 📊 Performance Results
 
 | Configuration | Recall@1 | Recall@3 | Business Impact |
@@ -98,13 +80,12 @@ MMR_LAMBDA = 0.93  # Balanced accuracy-diversity
 ## 📄 Generated Output Files
 
 ### Excel Recommendation Files
-- `CodeBloom_RecommendationOutputSheet_MAX.xlsx` - Maximum accuracy results
-- `CodeBloom_RecommendationOutputSheet_TUNED.xlsx` - Balanced performance results
+- `CodeBloom_Recommendation Output Sheet.xlsx` - Maximum accuracy and balanced performance results
 
-### Analysis Files  
-- `codebase_cleaning_EDA.csv` - Cleaned dataset for further analysis
-- `recommendation_output_max.csv` - Raw scores (max accuracy config)
-- `recommendation_output_tuned.csv` - Raw scores (balanced config)
+
+### Analysis File  
+- `CodeBloom_CodeBase_Datacleaning.csv` - Cleaned dataset for further analysis
+
 ##  CODE ARCHITECTURE 
 <img width="918" height="685" alt="proo_code_architecture_flow" src="https://github.com/user-attachments/assets/fe2e5ca0-9fcd-49a6-91c4-0a4c8c9f27b2" />
 
@@ -121,6 +102,8 @@ MMR_LAMBDA = 0.93  # Balanced accuracy-diversity
 
 The system generates comprehensive business intelligence visualizations:
 
+
+
 ### Cart Size Distribution
 ![Cart Size Distribution](images/images/cart_size_hist.png)
 Peak at 6-item carts (350K orders) with exponential decay. Optimizes for typical customer purchasing patterns.
@@ -129,17 +112,7 @@ Peak at 6-item carts (350K orders) with exponential decay. Optimizes for typical
 ![Long Tail Distribution](images/images/long_tail.png)
 Classic power-law distribution enables effective cold-start handling through popularity-based backfill strategies.
 
-### Context Contribution Weights
-![Context Weights](images/images/context_weights%20(1).png) 
-Global patterns dominate (51%), followed by channel context (24%). Store-level personalization provides significant lift (17%).
 
-### Confidence Calibration
-![Confidence Calibration](images/images/confidence_calibration.png)
-Well-calibrated confidence scores enable business confidence thresholds and A/B testing frameworks.
-
-### Lift Curve Analysis
-![Lift Curve](images/images/lift_curve.png)
-14% lift over random recommendations in top-confidence decile, enabling targeted deployment strategies.
 
 
 ## 🔧 Step-by-Step Usage
