@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-[![Open In Colab](https://colab.research.google.com/drive/1tv6d8OMdtUf4gYuAss-9-o6qvsMs4JvH?usp=sharing)
+
 
 > **A production-ready, multi-context co-visitation recommendation system for Wings R Us restaurant chain. Built with advanced machine learning techniques for personalized menu recommendations.**
 
