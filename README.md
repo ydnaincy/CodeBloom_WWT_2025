@@ -47,7 +47,7 @@ Wings R Us AI is a comprehensive recommendation engine designed to enhance custo
 | **Temporal Validation** | 8K orders | **37.98%** | **+12.8% cross-sell** |
 
 
-![Performance Visualizations](images/images/cart_size_hist.png)
+
 
 
 ## 🌐 System Architecture
@@ -218,7 +218,9 @@ The system produces ready-to-use recommendation files:
 - **Business Intelligence**: Utilize performance charts for strategic decision making
 
 ---
+## PERFROMANCE VISUALIZATION
 
+![Performance Visualizations](images/images/cart_size_hist.png)
 ## 🛠️ Technology Stack
 
 **Frontend**: HTML5, CSS3, JavaScript, Glassmorphism UI  
