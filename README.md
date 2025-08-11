@@ -237,17 +237,6 @@ The system produces ready-to-use recommendation files:
 - 🎯 Recommendation accuracy tracking
 - 💹 ROI impact analysis
 
-## ⚙️ Configuration Options
-
-**Maximum Accuracy Mode** (87.16% Recall@1)
-```python
-CONFIG = "MAX"  # Best for premium customers
-```
-
-**Balanced Mode** (85.2% Recall@1 + Diversity)
-```python
-CONFIG = "TUNED"  # Best for general audience
-```
 
 ## 📞 Support & Links
 
