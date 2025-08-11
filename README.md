@@ -63,7 +63,10 @@ Wings R Us AI is a comprehensive recommendation engine designed to enhance custo
 5. **Recommendation** → blended scores, backoff to popularity, optional **MMR**
 6. **Evaluation** → Strict LOO + Temporal; Recall@K / MAP@3 / NDCG@3
 7. **Outputs** → `Recommendation_Output_MAX.xlsx`, `Recommendation_Output_TUNED.xlsx`, metrics JSON/CSV
-   
+
+
+ <img width="960" height="329" alt="proo_architecture_flow_clear" src="https://github.com/user-attachments/assets/7175c5ec-402e-42f3-a348-83e70140ecd3" />
+  
 ## 📈 Business Value Proposition
 
 | **Business Objective** | **Challenge in QSR Industry** | **Our AI-Powered Solution** | **Expected Impact** |
