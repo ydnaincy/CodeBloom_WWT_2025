@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ydnaincy/wings-r-us-ai/blob/main/CodeBase_Main.ipynb)
+[![Open In Colab](https://colab.research.google.com/drive/1tv6d8OMdtUf4gYuAss-9-o6qvsMs4JvH?usp=sharing)
 
 > **A production-ready, multi-context co-visitation recommendation system for Wings R Us restaurant chain. Built with advanced machine learning techniques for personalized menu recommendations.**
 
@@ -24,7 +24,7 @@ Wings R Us AI is a comprehensive recommendation engine designed to enhance custo
 ## 🚀 Live Demo & Quick Access
 
 - 🌐 **[Try Live Demo](https://ydnaincy.github.io/proo/App.html)** – Interactive food ordering interface  
-- 📊 **[Open in Colab](https://colab.research.google.com/github/ydnaincy/proo/blob/main/CodeBloom_CodeBase.ipynb)** – Complete ML pipeline  
+- 📊 **[Open in Colab](https://colab.research.google.com/drive/1tv6d8OMdtUf4gYuAss-9-o6qvsMs4JvH?usp=sharing)** – Complete ML pipeline  
 - 🎨 **[View Wireframe](https://ydnaincy.github.io/proo/wireframe.html)** – UI/UX design prototype
 
 
