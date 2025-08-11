@@ -105,13 +105,14 @@ MMR_LAMBDA = 0.93  # Balanced accuracy-diversity
 - `codebase_cleaning_EDA.csv` - Cleaned dataset for further analysis
 - `recommendation_output_max.csv` - Raw scores (max accuracy config)
 - `recommendation_output_tuned.csv` - Raw scores (balanced config)
-
+##  CODE ARCHITECTURE 
+<img width="918" height="685" alt="proo_code_architecture_flow" src="https://github.com/user-attachments/assets/fe2e5ca0-9fcd-49a6-91c4-0a4c8c9f27b2" />
 ### Visualization Charts
 - Cart size distribution histograms
 - Item popularity long-tail curves  
 - Context contribution weight analysis
 - Performance calibration charts
-<img width="918" height="685" alt="proo_code_architecture_flow" src="https://github.com/user-attachments/assets/fe2e5ca0-9fcd-49a6-91c4-0a4c8c9f27b2" />
+
 
 
 ## 📊 Visualizations
