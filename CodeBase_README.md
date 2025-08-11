@@ -74,10 +74,10 @@ jupyter notebook CodeBloom_CodeBase.ipynb
 
 ## 📊 Performance Results
 
-| Configuration | Recall@1 | Recall@3 | Business Impact |
-|---------------|----------|----------|-----------------|
-| **MAX** | **87.16%** | **87.40%** | Premium customers |
-| **TUNED** | **85.20%** | **85.62%** | +23% diversity |
+| Configuration | Recall@3 | Business Impact |
+|---------------|----------|-----------------|
+| **MAX** | **36.5%%** | **Premium customers** |
+| **TUNED** | **35.8%** | **+23% diversity** |
 
 ## 📄 Generated Output Files
 
@@ -102,17 +102,33 @@ jupyter notebook CodeBloom_CodeBase.ipynb
 
 ## 📊 Visualizations
 
-The system generates comprehensive business intelligence visualizations:
+## The system generates comprehensive business intelligence visualizations:
+
+## Recommendation Accuracy Curve: 
+Illustrates how model accuracy changes with different top-N recommendation thresholds.
+
+<img width="976" height="590" alt="image 4" src="https://github.com/user-attachments/assets/631415d6-099d-4f06-928c-703c9b64fbf3" />
+Cart Size Distribution: Most customer orders contain 1–2 items, with frequency dropping sharply as cart size increases.
+\\
 
 
+## Co-visitation Heatmap (Top 20): 
+Shows the most frequently purchased item pairs, highlighting popular menu combinations.
 
-### Cart Size Distribution
-![Cart Size Distribution](images/images/cart_size_hist.png)
-Peak at 6-item carts (350K orders) with exponential decay. Optimizes for typical customer purchasing patterns.
+<img width="870" height="735" alt="image 3" src="https://github.com/user-attachments/assets/88df65af-61b5-4ec3-a7e2-80fb9e5dda9e" />
 
 ### Item Popularity Long Tail  
-![Long Tail Distribution](images/images/long_tail.png)
+
 Classic power-law distribution enables effective cold-start handling through popularity-based backfill strategies.
+
+<img width="727" height="478" alt="image 2" src="https://github.com/user-attachments/assets/b4e1168f-f3e7-4ea3-bfe5-1d7afbcedf31" />
+## Cart Size Distribution:
+Most customer orders contain 1–2 items, with frequency dropping sharply as cart size increases.
+
+<img width="730" height="480" alt="image 1" src="https://github.com/user-attachments/assets/675c0f61-bb94-4254-ba1a-fa49518da08f" />
+
+
+
 
 
 
@@ -217,7 +233,7 @@ def monitor_model_health():
 
 ## ✅ Results Summary
 
-🏆 **87.16%** top-1 recommendation accuracy  
+🏆 **35.6%%** top-1 recommendation accuracy  
 ⚡ **<2 seconds** processing time per 1000 recommendations  
 📈 **+14.5%** revenue lift over baseline  
 🎯 **99.8%** recommendation coverage  
