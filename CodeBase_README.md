@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=flat&logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Accuracy](https://img.shields.io/badge/accuracy-87.16%25-success.svg)](#performance-metrics)
+[![Accuracy](https://img.shields.io/badge/accuracy-36.5%25-success.svg)](#performance-metrics)
 
 > **Complete ML pipeline implementation** of Wings R Us AI recommendation system in Google Colab with comprehensive data analysis, model training, and business intelligence.
 
@@ -214,13 +214,6 @@ def monitor_model_health():
         'temporal_consistency': 0.92
     }
 ```
-
-## 📞 Support & Resources
-
-- 🐛 **[Issues](https://github.com/ydnaincy/wings-r-us-ai/issues)** - Report bugs
-- 💬 **[Discussions](https://github.com/ydnaincy/wings-r-us-ai/discussions)** - Q&A  
-- 📖 **[Documentation](https://github.com/ydnaincy/wings-r-us-ai/wiki)** - Full docs
-- 🌐 **[Live Demo](App.html)** - Try the web app
 
 ## 📈 Algorithm Overview
 
