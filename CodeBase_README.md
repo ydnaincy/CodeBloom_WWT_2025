@@ -111,6 +111,7 @@ MMR_LAMBDA = 0.93  # Balanced accuracy-diversity
 - Item popularity long-tail curves  
 - Context contribution weight analysis
 - Performance calibration charts
+<img width="918" height="685" alt="proo_code_architecture_flow" src="https://github.com/user-attachments/assets/fe2e5ca0-9fcd-49a6-91c4-0a4c8c9f27b2" />
 
 
 ## 📊 Visualizations
